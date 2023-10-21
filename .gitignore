@@ -75,5 +75,5 @@ crashlytics-build.properties
 .idea/
 .vscode/
 /Assets/Unity.VisualScripting.Generated/
-/Assets/Unity.VisualScripting.Generated.meta/
+Assets/Unity.VisualScripting.Generated.meta
 *.DS_Store
