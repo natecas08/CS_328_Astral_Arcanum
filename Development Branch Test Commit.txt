@@ -1,3 +1,3 @@
-This is the Unstable branch. Please push to this, not the main.
+This is the development branch. Please push to this, not the main.
 Once we all feel that the current version is ready, we will merge
 this branch into main.
