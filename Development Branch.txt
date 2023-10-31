@@ -1,3 +1,11 @@
+Current Version: Indev 0.1
+
 This is the development branch. Please push to this, not the main.
 Once we all feel that the current version is ready, we will merge
 this branch into main.
+
+Goals:
+	Basic Concept Art
+	Character Movement
+	Menu Screens
+	
