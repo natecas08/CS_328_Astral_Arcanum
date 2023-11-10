@@ -30,16 +30,37 @@ public class PlayerController : MonoBehaviour
     {
         if(movementInput != Vector2.zero)
         {
-            int count = rb.Cast(
-                movementInput,
+            bool success = TryMove(movementInput);
+
+            if(!success)
+            {
+                success = TryMove(new Vector2(movementInput.x, 0));
+
+                if (!success)
+                {
+                    success = TryMove(new Vector2(movementInput.y, 0));
+                }
+            }
+
+        }
+    }
+
+    private bool TryMove(Vector2 direction)
+    {
+        int count = rb.Cast(
+                direction,
                 movementFilter,
                 castCollisions,
                 moveSpeed * Time.fixedDeltaTime + collisionOffset);
 
-            if(count == 0)
-            {
-                rb.MovePosition(rb.position + moveSpeed * Time.fixedDeltaTime * movementInput);
-            }
+        if (count == 0)
+        {
+            rb.MovePosition(rb.position + moveSpeed * Time.fixedDeltaTime * direction);
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 
@@ -48,3 +69,5 @@ public class PlayerController : MonoBehaviour
         movementInput = movementValue.Get<Vector2>();
     }
 }
+
+
