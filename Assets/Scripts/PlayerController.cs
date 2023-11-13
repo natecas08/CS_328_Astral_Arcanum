@@ -5,6 +5,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    //spells discovered array
+    public static bool fireEnabled = false;
+
+
     public float moveSpeed = 1f;
     public ContactFilter2D movementFilter;
     public float collisionOffset = 0.05f;
@@ -23,7 +27,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
 
     private void FixedUpdate()
