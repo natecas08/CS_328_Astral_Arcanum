@@ -60,25 +60,41 @@ public class PlayerController : MonoBehaviour
             {
                 //move right
                 animator.SetBool("isMovingRight", true);
+
+                animator.SetBool("isMovingLeft", false);
+                animator.SetBool("isMovingDown", false);
+                animator.SetBool("isMovingUp", false);
+
             }
-            
-            if(movementInput.x == -1.0)
+            else if(movementInput.x == -1.0)
             {
                 //move left
                 animator.SetBool("isMovingLeft", true);
+
+                animator.SetBool("isMovingRight", false);
+                animator.SetBool("isMovingDown", false);
+                animator.SetBool("isMovingUp", false);
+
             }
-            
-            if (movementInput.y == 1.0)
+            else if (movementInput.y == 1.0)
             {
                 //move up
                 animator.SetBool("isMovingUp", true);
-            }
-            
-            if (movementInput.y == -1.0)
+
+                animator.SetBool("isMovingRight", false);
+                animator.SetBool("isMovingDown", false);
+                animator.SetBool("isMovingLeft", false);
+            }    
+            else if (movementInput.y == -1.0)
             {
                 //move down
                 animator.SetBool("isMovingDown", true);
+
+                animator.SetBool("isMovingUp", false);
+                animator.SetBool("isMovingRight", false);
+                animator.SetBool("isMovingLeft", false);
             }
+            
         }
         else
         {
