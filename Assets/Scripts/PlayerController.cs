@@ -35,14 +35,14 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(movementInput != Vector2.zero)
-        {
-            animator.SetBool("isIdle", false);
-            animator.SetBool("isMovingRight", false);
-            animator.SetBool("isMovingUp", false);
-            animator.SetBool("isMovingLeft", false);
-            animator.SetBool("isMovingDown", false);
+        animator.SetBool("isIdle", false);
+        animator.SetBool("isMovingRight", false);
+        animator.SetBool("isMovingUp", false);
+        animator.SetBool("isMovingLeft", false);
+        animator.SetBool("isMovingDown", false);
 
+        if (movementInput != Vector2.zero)
+        {
             bool success = TryMove(movementInput);
             Debug.Log(movementInput);
 
