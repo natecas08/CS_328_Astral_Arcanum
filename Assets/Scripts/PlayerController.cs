@@ -5,6 +5,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    //spells discovered array
+    public static bool fireEnabled = false;
+
+
     public float moveSpeed = 1f;
     public ContactFilter2D movementFilter;
     public float collisionOffset = 0.05f;
@@ -12,25 +16,35 @@ public class PlayerController : MonoBehaviour
     Vector2 movementInput;
     Rigidbody2D rb;
 
+    Animator animator;
+
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
 
     private void FixedUpdate()
     {
-        if(movementInput != Vector2.zero)
+        animator.SetBool("isIdle", false);
+        animator.SetBool("isMovingRight", false);
+        animator.SetBool("isMovingUp", false);
+        animator.SetBool("isMovingLeft", false);
+        animator.SetBool("isMovingDown", false);
+
+        if (movementInput != Vector2.zero)
         {
             bool success = TryMove(movementInput);
+            Debug.Log(movementInput);
 
             if(!success)
             {
@@ -42,6 +56,49 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
+            if(movementInput.x == 1.0)
+            {
+                //move right
+                animator.SetBool("isMovingRight", true);
+
+                animator.SetBool("isMovingLeft", false);
+                animator.SetBool("isMovingDown", false);
+                animator.SetBool("isMovingUp", false);
+
+            }
+            else if(movementInput.x == -1.0)
+            {
+                //move left
+                animator.SetBool("isMovingLeft", true);
+
+                animator.SetBool("isMovingRight", false);
+                animator.SetBool("isMovingDown", false);
+                animator.SetBool("isMovingUp", false);
+
+            }
+            else if (movementInput.y == 1.0)
+            {
+                //move up
+                animator.SetBool("isMovingUp", true);
+
+                animator.SetBool("isMovingRight", false);
+                animator.SetBool("isMovingDown", false);
+                animator.SetBool("isMovingLeft", false);
+            }    
+            else if (movementInput.y == -1.0)
+            {
+                //move down
+                animator.SetBool("isMovingDown", true);
+
+                animator.SetBool("isMovingUp", false);
+                animator.SetBool("isMovingRight", false);
+                animator.SetBool("isMovingLeft", false);
+            }
+            
+        }
+        else
+        {
+            animator.SetBool("isIdle", true);
         }
     }
 
@@ -67,6 +124,11 @@ public class PlayerController : MonoBehaviour
     void OnMove(InputValue movementValue)
     {
         movementInput = movementValue.Get<Vector2>();
+    }
+
+    void OnFire(InputValue fireValue)
+    {
+        //if(fireValue == )
     }
 }
 
