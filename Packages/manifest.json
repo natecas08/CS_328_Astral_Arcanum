@@ -1,7 +1,5 @@
 {
   "dependencies": {
-    "com.onchainstudios.filetemplates": "https://github.com/onchainstudios/onchainstudios-unity-extensions.git?path=/Packages/com.onchainstudios.filetemplates#v0.7.0-preview.13",
-    "com.onchainstudios.onchainuitoolkit": "https://github.com/onchainstudios/onchainstudios-unity-extensions.git?path=/Packages/com.onchainstudios.uitoolkitextensions#v0.7.0-preview.13",
     "com.unity.collab-proxy": "2.0.5",
     "com.unity.feature.2d": "2.0.0",
     "com.unity.ide.rider": "3.0.24",
