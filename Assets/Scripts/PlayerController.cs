@@ -30,7 +30,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        if (Keyboard.current.anyKey.wasPressedThisFrame)
+        {
+            Debug.Log("A key was pressed");
+        }
     }
 
     private void FixedUpdate()
@@ -128,7 +131,12 @@ public class PlayerController : MonoBehaviour
 
     void OnFire(InputValue fireValue)
     {
-        //if(fireValue == )
+        /*
+        if(fireValue == '1' && fireEnabled = true)
+        {
+
+        }
+        */
     }
 }
 
