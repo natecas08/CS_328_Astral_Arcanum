@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 244d3ea50fcfa364fbba33788913fe45
+guid: 2a2e4e8e52bd9284896df69d0799d316
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bridge_Repair_0
+      name: FireSpell1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1a0b408fba6710f408b50f6417fa7241
-      internalID: 1746957575
+      spriteID: f3ad1b7ee70baf64bb009e42802f114c
+      internalID: -1402855134
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bridge_Repair_1
+      name: FireSpell1_1
       rect:
         serializedVersion: 2
         x: 32
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 422c08e7440ba064bb75dbba53737b2c
-      internalID: -1219871654
+      spriteID: c4155fad24907584a994027a77351fe5
+      internalID: 1365195163
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bridge_Repair_2
+      name: FireSpell1_2
       rect:
         serializedVersion: 2
         x: 64
@@ -166,14 +166,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2e67a2faa7d89ab43bc8a125517afeaa
-      internalID: 1442928002
+      spriteID: 8b43e4feda6361444be4a136cca85b44
+      internalID: -727442995
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bridge_Repair_3
+      name: FireSpell1_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14157ec930272ca4591fa4aa71881ae5
+      internalID: -824667376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireSpell1_4
       rect:
         serializedVersion: 2
         x: 0
@@ -187,14 +208,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f0a52bc52c429a6409ee31271193aa5b
-      internalID: 905035624
+      spriteID: b00c5d902db1eb146b384491b0934906
+      internalID: -14692536
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bridge_Repair_4
+      name: FireSpell1_5
       rect:
         serializedVersion: 2
         x: 32
@@ -208,14 +229,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d1e4790e3bec27941ad9845892ed9750
-      internalID: 1104457390
+      spriteID: 0410c740a7966a14c9c73bd014bc240d
+      internalID: 994111447
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bridge_Repair_5
+      name: FireSpell1_6
       rect:
         serializedVersion: 2
         x: 64
@@ -229,14 +250,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4782742bbb17ca44db5e801b9e9d3704
-      internalID: 1299593471
+      spriteID: ff9b7aa9a8aab0346979b8c9a7e0c6f7
+      internalID: -1327385875
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bridge_Repair_6
+      name: FireSpell1_7
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01f4eb246ee26f8409a132caf4976618
+      internalID: 278180889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireSpell1_8
       rect:
         serializedVersion: 2
         x: 0
@@ -250,14 +292,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b8be8f07397d0c744a029b93fa060636
-      internalID: 1186881159
+      spriteID: 731c2187d7a56484c91f4dea05777a37
+      internalID: 579400170
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bridge_Repair_7
+      name: FireSpell1_9
       rect:
         serializedVersion: 2
         x: 32
@@ -271,14 +313,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2d069330fe189c540940d2486c9fd227
-      internalID: 120464923
+      spriteID: a3d5ac930eb94ce42ac5d58b3833d583
+      internalID: 166623275
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bridge_Repair_8
+      name: FireSpell1_10
       rect:
         serializedVersion: 2
         x: 64
@@ -292,14 +334,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e470acb098aeb39418aab380749190fc
-      internalID: 1828343437
+      spriteID: d92742a37955a9e40b4b610ec5388bf1
+      internalID: -1719326414
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bridge_Repair_9
+      name: FireSpell1_11
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d9df6bc68db29c4d8800561f9290403
+      internalID: -2053053643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireSpell1_12
       rect:
         serializedVersion: 2
         x: 0
@@ -313,14 +376,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 825e4012acea62d46a2788ed1936aa71
-      internalID: -98927395
+      spriteID: 25ce194d83701c946a81972de4b70cc0
+      internalID: 1560548242
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bridge_Repair_10
+      name: FireSpell1_13
       rect:
         serializedVersion: 2
         x: 32
@@ -334,14 +397,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6126e1e4c070a8d438255e3fcfecf68f
-      internalID: 1321395241
+      spriteID: 359260365e43b704ab932f647df28ba6
+      internalID: 1685970823
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bridge_Repair_11
+      name: FireSpell1_14
       rect:
         serializedVersion: 2
         x: 64
@@ -355,8 +418,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ea35447750cbb464cb3cd16cbeb025bf
-      internalID: 929876068
+      spriteID: 3cbbf38b24d07ba419702613b6e49665
+      internalID: -984812453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireSpell1_15
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0723064f10e90d2418a47ec359feb55f
+      internalID: 880238681
       vertices: []
       indices: 
       edges: []
@@ -372,18 +456,22 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Bridge_Repair_0: 1746957575
-      Bridge_Repair_1: -1219871654
-      Bridge_Repair_10: 1321395241
-      Bridge_Repair_11: 929876068
-      Bridge_Repair_2: 1442928002
-      Bridge_Repair_3: 905035624
-      Bridge_Repair_4: 1104457390
-      Bridge_Repair_5: 1299593471
-      Bridge_Repair_6: 1186881159
-      Bridge_Repair_7: 120464923
-      Bridge_Repair_8: 1828343437
-      Bridge_Repair_9: -98927395
+      FireSpell1_0: -1402855134
+      FireSpell1_1: 1365195163
+      FireSpell1_10: -1719326414
+      FireSpell1_11: -2053053643
+      FireSpell1_12: 1560548242
+      FireSpell1_13: 1685970823
+      FireSpell1_14: -984812453
+      FireSpell1_15: 880238681
+      FireSpell1_2: -727442995
+      FireSpell1_3: -824667376
+      FireSpell1_4: -14692536
+      FireSpell1_5: 994111447
+      FireSpell1_6: -1327385875
+      FireSpell1_7: 278180889
+      FireSpell1_8: 579400170
+      FireSpell1_9: 166623275
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

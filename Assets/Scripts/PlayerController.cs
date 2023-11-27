@@ -13,6 +13,13 @@ public class PlayerController : MonoBehaviour
     public ContactFilter2D movementFilter;
     public float collisionOffset = 0.05f;
 
+    //Spell casting list
+    public static bool fireCasted = false;
+
+    //Spell selection
+    public int spellSelected = 0;
+
+
     Vector2 movementInput;
     Rigidbody2D rb;
 
@@ -30,10 +37,39 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Keyboard.current.anyKey.wasPressedThisFrame)
+        if(Input.GetKeyDown(KeyCode.Keypad1) || Input.GetKeyDown(KeyCode.Alpha1))
         {
-            Debug.Log("A key was pressed");
+            spellSelected = 1;
+            Debug.Log("Fire Spell Selected");
         }
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            switch (spellSelected)
+            {
+                case 1:
+                    fireCasted = true;
+                    InstantiatePrefab();
+                    Debug.Log("Fire Casted Start");
+                    StartCoroutine(fireDuration());
+                    break;
+                default:
+                    break;
+            }       
+        }
+    }
+
+    private void InstantiatePrefab()
+    {
+        //GameObject instance = InstantiatePrefab<GameObject>(FireSpell);
+        //instance.transform.position = rb.position;
+    }
+
+    IEnumerator fireDuration()
+    {
+        yield return new WaitForSeconds(2);
+        fireCasted = false;
+        Debug.Log("Fire Casted Complete");
     }
 
     private void FixedUpdate()
