@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     //spells discovered array
     public static bool fireEnabled = false;
 
+    public static Vector3 playerLocation;
+
 
     public float moveSpeed = 1f;
     public ContactFilter2D movementFilter;
@@ -152,6 +154,7 @@ public class PlayerController : MonoBehaviour
         if (count == 0)
         {
             rb.MovePosition(rb.position + moveSpeed * Time.fixedDeltaTime * direction);
+            playerLocation = rb.position;
             return true;
         }
         else
