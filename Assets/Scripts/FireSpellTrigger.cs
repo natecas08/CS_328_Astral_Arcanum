@@ -24,5 +24,9 @@ public class FireSpellTrigger : MonoBehaviour
             rb.MovePosition(PlayerController.pos)
         }
         */
+        if(PlayerController.fireCasted)
+        {
+            rb.MovePosition(PlayerController.playerLocation + PlayerController.playerDirection);
+        } 
     }
 }

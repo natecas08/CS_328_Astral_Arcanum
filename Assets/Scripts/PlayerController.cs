@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public static bool fireEnabled = false;
 
     public static Vector3 playerLocation;
+    public static Vector3 playerDirection;
 
 
     public float moveSpeed = 1f;
@@ -76,6 +77,8 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        playerLocation = rb.position;
+
         animator.SetBool("isIdle", false);
         animator.SetBool("isMovingRight", false);
         animator.SetBool("isMovingUp", false);
@@ -99,6 +102,7 @@ public class PlayerController : MonoBehaviour
 
             if(movementInput.x == 1.0)
             {
+                playerDirection.x = 1;
                 //move right
                 animator.SetBool("isMovingRight", true);
 
@@ -109,6 +113,7 @@ public class PlayerController : MonoBehaviour
             }
             else if(movementInput.x == -1.0)
             {
+                playerDirection.x = -1;
                 //move left
                 animator.SetBool("isMovingLeft", true);
 
@@ -119,6 +124,7 @@ public class PlayerController : MonoBehaviour
             }
             else if (movementInput.y == 1.0)
             {
+                playerDirection.y = 1;
                 //move up
                 animator.SetBool("isMovingUp", true);
 
@@ -128,6 +134,7 @@ public class PlayerController : MonoBehaviour
             }    
             else if (movementInput.y == -1.0)
             {
+                playerDirection.y = -1;
                 //move down
                 animator.SetBool("isMovingDown", true);
 
@@ -154,7 +161,6 @@ public class PlayerController : MonoBehaviour
         if (count == 0)
         {
             rb.MovePosition(rb.position + moveSpeed * Time.fixedDeltaTime * direction);
-            playerLocation = rb.position;
             return true;
         }
         else
