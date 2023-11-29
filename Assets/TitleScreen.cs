@@ -5,11 +5,13 @@ using UnityEngine;
 public class TitleScreen : MonoBehaviour
 {
     public GameObject titleScreenUI; 
+    public GameObject levelSelectUI;
 
     // Start is called before the first frame update
     void Start()
     {
         Time.timeScale = 0f;
+        titleScreenUI.SetActive(true);
     }
 
     // Update is called once per frame
@@ -19,8 +21,8 @@ public class TitleScreen : MonoBehaviour
     }
 
     public void Play() {
-        Time.timeScale = 1f;
         titleScreenUI.SetActive(false);
+        levelSelectUI.SetActive(true);
     }
 
     public void Exit() {
