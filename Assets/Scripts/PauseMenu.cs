@@ -5,7 +5,8 @@ using UnityEngine;
 public class PauseMenu : MonoBehaviour {
     public static bool isPaused = false; 
 
-    public GameObject pauseMenuUI;    
+    public GameObject pauseMenuUI;   
+    public GameObject titleScreenUI; 
 
     // Update is called once per frame
     void Update() {
@@ -31,9 +32,9 @@ public class PauseMenu : MonoBehaviour {
     }
 
     public void LoadMenu() {
-        //RETURN HERE when main menu created
-        Time.timeScale = 1f;
-        Debug.Log("Loading Menu");
+        Time.timeScale = 0f;
+        pauseMenuUI.SetActive(false);
+        titleScreenUI.SetActive(true);
     }
 
     public void QuitGame() {
