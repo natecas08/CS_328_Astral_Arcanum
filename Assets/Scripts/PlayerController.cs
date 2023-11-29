@@ -105,6 +105,7 @@ public class PlayerController : MonoBehaviour
             if(movementInput.x == 1.0)
             {
                 playerDirection.x = 1;
+                playerDirection.y = 0;
                 //move right
                 animator.SetBool("isMovingRight", true);
 
@@ -116,6 +117,7 @@ public class PlayerController : MonoBehaviour
             else if(movementInput.x == -1.0)
             {
                 playerDirection.x = -1;
+                playerDirection.y = 0;
                 //move left
                 animator.SetBool("isMovingLeft", true);
 
@@ -127,6 +129,7 @@ public class PlayerController : MonoBehaviour
             else if (movementInput.y == 1.0)
             {
                 playerDirection.y = 1;
+                playerDirection.x = 0;
                 //move up
                 animator.SetBool("isMovingUp", true);
 
@@ -137,6 +140,7 @@ public class PlayerController : MonoBehaviour
             else if (movementInput.y == -1.0)
             {
                 playerDirection.y = -1;
+                playerDirection.x = 0;
                 //move down
                 animator.SetBool("isMovingDown", true);
 

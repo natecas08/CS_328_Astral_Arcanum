@@ -6,9 +6,7 @@ using UnityEngine;
 
 public class FireSpellTrigger : MonoBehaviour
 {
-    public float yOffset = 0;
-    public float xOffset = 0;
-    public float zOffset = 0;
+    public float fireOffset;
 
     Rigidbody2D rb;
 
@@ -32,12 +30,8 @@ public class FireSpellTrigger : MonoBehaviour
         */
         if (PlayerController.fireCasted)
         {
-            Vector3 fireOffset;
-            fireOffset.x = xOffset;
-            fireOffset.y = yOffset;
-            fireOffset.z = zOffset;
 
-            rb.MovePosition(PlayerController.playerLocation + (PlayerController.playerDirection / 2) + fireOffset);
+            rb.MovePosition(PlayerController.playerLocation + (PlayerController.playerDirection * fireOffset));
             animator.SetBool("IsCasted", true);
         } 
         else
