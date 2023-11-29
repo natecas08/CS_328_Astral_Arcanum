@@ -26,7 +26,8 @@ public class FireSpellTrigger : MonoBehaviour
         */
         if (PlayerController.fireCasted)
         {
-            rb.MovePosition(PlayerController.playerLocation + (PlayerController.playerDirection / 3));
+            rb.MovePosition(PlayerController.playerLocation + (PlayerController.playerDirection / 2));
+            animator.SetBool("IsCasted", true);
         } 
         else
         {
@@ -36,6 +37,7 @@ public class FireSpellTrigger : MonoBehaviour
             homePos.z = 0;
 
             rb.MovePosition(homePos);
+            animator.SetBool("IsCasted", false);
         }
     }
 }

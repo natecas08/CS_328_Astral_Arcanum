@@ -42,8 +42,16 @@ public class PlayerController : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Keypad1) || Input.GetKeyDown(KeyCode.Alpha1))
         {
-            spellSelected = 1;
-            Debug.Log("Fire Spell Selected");
+            if(fireEnabled)
+            {
+                spellSelected = 1;
+                Debug.Log("Fire Spell Selected");
+            }
+            else
+            {
+                spellSelected = 0;
+                Debug.Log("Invalid Spell Selected");
+            }
         }
 
         if(Input.GetKeyDown(KeyCode.Space))
@@ -56,6 +64,7 @@ public class PlayerController : MonoBehaviour
                     StartCoroutine(fireDuration());
                     break;
                 default:
+                    //do nothing
                     break;
             }       
         }
