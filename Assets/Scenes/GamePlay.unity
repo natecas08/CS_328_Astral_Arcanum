@@ -268,6 +268,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4480a43da819f8947bd40f2a35b47333, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  yOffset: 0
+  xOffset: 0
+  zOffset: 0
 --- !u!61 &268954254
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17728,7 +17731,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.03, y: 1.4, z: 0}
-  m_LocalScale: {x: 0.54, y: 0.5845, z: 1}
+  m_LocalScale: {x: 0.97609794, y: 1.0565356, z: 1.8075886}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -17854,6 +17857,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 8823364509724543522, guid: 9948541841e4dc44db0c1020a73ced4e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -813287821, guid: 71640345fe17967499f81fa473ceaa65, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -2,8 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class FireSpellTrigger : MonoBehaviour
 {
+    public float yOffset = 0;
+    public float xOffset = 0;
+    public float zOffset = 0;
+
     Rigidbody2D rb;
 
     Animator animator;
@@ -26,7 +32,12 @@ public class FireSpellTrigger : MonoBehaviour
         */
         if (PlayerController.fireCasted)
         {
-            rb.MovePosition(PlayerController.playerLocation + (PlayerController.playerDirection / 2));
+            Vector3 fireOffset;
+            fireOffset.x = xOffset;
+            fireOffset.y = yOffset;
+            fireOffset.z = zOffset;
+
+            rb.MovePosition(PlayerController.playerLocation + (PlayerController.playerDirection / 2) + fireOffset);
             animator.SetBool("IsCasted", true);
         } 
         else
