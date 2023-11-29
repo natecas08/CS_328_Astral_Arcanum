@@ -24,9 +24,18 @@ public class FireSpellTrigger : MonoBehaviour
             rb.MovePosition(PlayerController.pos)
         }
         */
-        if(PlayerController.fireCasted)
+        if (PlayerController.fireCasted)
         {
-            rb.MovePosition(PlayerController.playerLocation + PlayerController.playerDirection);
+            rb.MovePosition(PlayerController.playerLocation + (PlayerController.playerDirection / 3));
         } 
+        else
+        {
+            Vector3 homePos;
+            homePos.x = -30;
+            homePos.y = 0;
+            homePos.z = 0;
+
+            rb.MovePosition(homePos);
+        }
     }
 }

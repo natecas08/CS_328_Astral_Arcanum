@@ -52,7 +52,6 @@ public class PlayerController : MonoBehaviour
             {
                 case 1:
                     fireCasted = true;
-                    InstantiatePrefab();
                     Debug.Log("Fire Casted Start");
                     StartCoroutine(fireDuration());
                     break;
@@ -60,12 +59,6 @@ public class PlayerController : MonoBehaviour
                     break;
             }       
         }
-    }
-
-    private void InstantiatePrefab()
-    {
-        //GameObject instance = InstantiatePrefab<GameObject>(FireSpell);
-        //instance.transform.position = rb.position;
     }
 
     IEnumerator fireDuration()
