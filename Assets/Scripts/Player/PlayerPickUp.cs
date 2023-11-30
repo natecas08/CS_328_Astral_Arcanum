@@ -22,8 +22,13 @@ public class PlayerPickUp : MonoBehaviour
         if(other.gameObject.CompareTag("Fire Spell Sheet"))
         {
             Destroy(other.gameObject);
-            //PlayerController.spellList[0] = true;
             PlayerController.fireEnabled = true;
+        }
+
+        if (other.gameObject.CompareTag("Repair Spell Sheet"))
+        {
+            Destroy(other.gameObject);
+            PlayerController.repairEnabled = true;
         }
     }
 }

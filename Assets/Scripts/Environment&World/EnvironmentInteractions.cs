@@ -21,10 +21,11 @@ public class PlayerInteractions : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Burnable") && PlayerController.fireEnabled == true && PlayerController.fireCasted == true)
         {
-
             Destroy(other.gameObject);
-            //PlayerController.spellList[0] = true;
-            //PlayerController.fireEnabled = true;
+        }
+        if (other.gameObject.CompareTag("Fixable") && PlayerController.repairEnabled == true && PlayerController.repairCasted == true)
+        {
+            
         }
     }
 }

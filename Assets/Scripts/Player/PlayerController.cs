@@ -5,27 +5,29 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    //spells discovered array
-    public static bool fireEnabled = false;
-
+    //public vars
     public static Vector3 playerLocation;
     public static Vector3 playerDirection;
-
-
     public float moveSpeed = 1f;
     public ContactFilter2D movementFilter;
     public float collisionOffset = 0.05f;
 
-    //Spell casting list
-    public static bool fireCasted = false;
-
-    //Spell selection
-    public int spellSelected = 0;
-
-
+    //private vars
     Vector2 movementInput;
     Rigidbody2D rb;
     Animator animator;
+
+
+    //Spell casting list
+    public static bool fireCasted = false;
+    public static bool repairCasted = false;
+
+    //spells discovered array
+    public static bool fireEnabled = false;
+    public static bool repairEnabled = false;
+
+    //Spell selection
+    public int spellSelected = 0;
 
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
 
@@ -48,12 +50,23 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                spellSelected = 0;
+                Debug.Log("Invalid Spell Selected");
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad2) || Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            if(repairEnabled)
+            {
+                spellSelected = 2;
+                Debug.Log("Repair Spell Selected");
+            }
+            else
+            {
                 Debug.Log("Invalid Spell Selected");
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             switch (spellSelected)
             {
