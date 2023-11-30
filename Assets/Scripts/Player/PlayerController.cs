@@ -5,12 +5,17 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    // Enemy damage values
+    public static int slimeDamage = 10;
+
     //public vars
     public static Vector3 playerLocation;
     public static Vector3 playerDirection;
     public float moveSpeed = 1f;
     public ContactFilter2D movementFilter;
     public float collisionOffset = 0.05f;
+
+    public int playerHealth = 100;
 
     //private vars
     Vector2 movementInput;
@@ -103,7 +108,7 @@ public class PlayerController : MonoBehaviour
         if (movementInput != Vector2.zero)
         {
             bool success = TryMove(movementInput);
-            Debug.Log(movementInput);
+            //Debug.Log(movementInput);
 
             if(!success)
             {
@@ -201,6 +206,32 @@ public class PlayerController : MonoBehaviour
 
         }
         */
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Slime"))
+        {
+            //player hit
+            playerHealth -= slimeDamage;
+            Debug.Log("player health: " + playerHealth);
+            checkHealth();
+        }
+    }
+
+    private void checkHealth()
+    {
+        if(playerHealth >= 100)
+        {
+            //player health maxed
+            playerHealth = 100;
+        }
+        else if(playerHealth <= 0)
+        {
+            playerHealth = 0;
+            Debug.Log("Player died");
+            //death stuff here
+        }
     }
 }
 

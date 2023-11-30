@@ -155,9 +155,12 @@ public class SlimeController : MonoBehaviour
 
     IEnumerator playerBreak()
     {
-        rb.velocity = new Vector2(moveSpeed, 0f);
-        transform.position = Vector2.MoveTowards(transform.position, new Vector2((target.position.x) + 0.5f, transform.position.y), moveSpeed * Time.deltaTime);
+        rb.velocity = new Vector2(moveSpeed*2, 0f);
+        transform.position = Vector2.MoveTowards(transform.position, new Vector2((target.position.x) + 0.5f * (-rb.velocity.x), transform.position.y), moveSpeed * 2 * Time.deltaTime);
         yield return new WaitForSeconds(5);
+
+        rb.velocity = new Vector2(0f, 0f);
+        yield return new WaitForSeconds(2);
         hit = false;
     }
 
@@ -166,7 +169,9 @@ public class SlimeController : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             hit = true;
+            Debug.Log("Player Hit"); 
             StartCoroutine(playerBreak());
         }
     } 
 }
+ 
