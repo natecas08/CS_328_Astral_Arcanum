@@ -14,6 +14,7 @@ public class SlimeController : MonoBehaviour
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
     public ContactFilter2D movementFilter;
     public float collisionOffset = 0.05f;
+    public bool hit = false;
 
     public slimeState curState = slimeState.Wandering;
     public Transform target;
@@ -98,35 +99,38 @@ public class SlimeController : MonoBehaviour
 
         void hostile()
         {
-            if (transform.position.x > target.position.x)
+            if(!hit)
             {
-                //target is left
-                transform.localScale = new Vector2(-1, 1);
-                rb.velocity = new Vector2(-moveSpeed, 0f);
-                transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, transform.position.y), moveSpeed * Time.deltaTime);
-            }
-            else if (transform.position.x < target.position.x)
-            {
-                //target is right
-                transform.localScale = new Vector2(1, 1);
-                rb.velocity = new Vector2(moveSpeed, 0f);
-                transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, transform.position.y), moveSpeed * Time.deltaTime);
-            }
+                if (transform.position.x > target.position.x)
+                {
+                    //target is left
+                    transform.localScale = new Vector2(-1, 1);
+                    rb.velocity = new Vector2(-moveSpeed, 0f);
+                    transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, transform.position.y), moveSpeed * Time.deltaTime);
+                }
+                else if (transform.position.x < target.position.x)
+                {
+                    //target is right
+                    transform.localScale = new Vector2(1, 1);
+                    rb.velocity = new Vector2(moveSpeed, 0f);
+                    transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, transform.position.y), moveSpeed * Time.deltaTime);
+                }
 
-            if (transform.position.y > target.position.y)
-            {
-                //target is left
-                transform.localScale = new Vector2(1, -1);
-                rb.velocity = new Vector2(0f, -moveSpeed);
-                transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, transform.position.y), moveSpeed * Time.deltaTime);
-            }
-            else if (transform.position.y < target.position.y)
-            {
-                //target is right
-                transform.localScale = new Vector2(1, 1);
-                rb.velocity = new Vector2(0f, moveSpeed);
-                transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, transform.position.y), moveSpeed * Time.deltaTime);
-            }
+                if (transform.position.y > target.position.y)
+                {
+                    //target is left
+                    //transform.localScale = new Vector2(1, -1);
+                    rb.velocity = new Vector2(0f, -moveSpeed);
+                    transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, transform.position.y), moveSpeed * Time.deltaTime);
+                }
+                else if (transform.position.y < target.position.y)
+                {
+                    //target is right
+                    //transform.localScale = new Vector2(1, 1);
+                    rb.velocity = new Vector2(0f, moveSpeed);
+                    transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, transform.position.y), moveSpeed * Time.deltaTime);
+                }
+            } 
         }
     }
 
@@ -148,4 +152,21 @@ public class SlimeController : MonoBehaviour
             return false;
         }
     }
+
+    IEnumerator playerBreak()
+    {
+        rb.velocity = new Vector2(moveSpeed, 0f);
+        transform.position = Vector2.MoveTowards(transform.position, new Vector2((target.position.x) + 0.5f, transform.position.y), moveSpeed * Time.deltaTime);
+        yield return new WaitForSeconds(5);
+        hit = false;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            hit = true;
+            StartCoroutine(playerBreak());
+        }
+    } 
 }
