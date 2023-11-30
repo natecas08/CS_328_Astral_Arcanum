@@ -19,7 +19,7 @@ public class PlayerInteractions : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Burnable") && PlayerController.fireEnabled == true && PlayerController.fireCasted == true)
+        if ((other.gameObject.CompareTag("Burnable") || other.gameObject.CompareTag("Slime")) && PlayerController.fireEnabled == true && PlayerController.fireCasted == true)
         {
             Destroy(other.gameObject);
         }
