@@ -25,7 +25,6 @@ public class PlayerController : MonoBehaviour
 
     Vector2 movementInput;
     Rigidbody2D rb;
-
     Animator animator;
 
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
@@ -68,6 +67,7 @@ public class PlayerController : MonoBehaviour
                     break;
             }       
         }
+
     }
 
     IEnumerator fireDuration()
