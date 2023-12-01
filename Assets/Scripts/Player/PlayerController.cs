@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour
     //health variables
     public static int playerHealth = 10;
     public int totalPlayerHealth = 10;
+    public bool invulnerable = false;
+    public float invulnSec;
     public Image[] hearts;
     public Sprite fullHeart;
     public Sprite emptyHeart;
@@ -220,34 +222,43 @@ public class PlayerController : MonoBehaviour
         */
     }
 
+    IEnumerator OnHit(int damage)
+    {
+        playerHealth -= damage;
+        Debug.Log("player health: " + playerHealth);
+        invulnerable = true;
+        yield return new WaitForSeconds(invulnSec);
+        invulnerable = false;
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Slime"))
+        if (!invulnerable)
         {
-            //player hit
-            playerHealth -= slimeDamage;
-            Debug.Log("player health: " + playerHealth);
-        }
 
-        if (other.gameObject.CompareTag("Ghost"))
-        {
-            //player hit
-            playerHealth -= ghostDamage;
-            Debug.Log("player health: " + playerHealth);
-        }
-
-        if (other.gameObject.CompareTag("slimeBoss"))
-        {
-            //player hit
-            if(SlimeBossController.stateNum == 4)
+            if (other.gameObject.CompareTag("Slime"))
             {
-                playerHealth -= slimeBossDamage * 3;
-                Debug.Log("player health: " + playerHealth);
+                //player hit
+                StartCoroutine(OnHit(slimeDamage));
             }
-            else
+
+            if (other.gameObject.CompareTag("Ghost"))
             {
-                playerHealth -= slimeBossDamage;
-                Debug.Log("player health: " + playerHealth);
+                //player hit
+                StartCoroutine(OnHit(ghostDamage));
+            }
+
+            if (other.gameObject.CompareTag("slimeBoss"))
+            {
+                //player hit
+                if(SlimeBossController.stateNum == 4)
+                {
+                    StartCoroutine(OnHit(slimeBossDamage * 3));
+                }
+                else
+                {
+                    StartCoroutine(OnHit(slimeBossDamage));
+                }
             }
         }
     }
