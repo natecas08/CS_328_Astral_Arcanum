@@ -234,7 +234,7 @@ public class PlayerController : MonoBehaviour
         if(playerHealth <= 0) {
             playerHealth = 0;
             Debug.Log("Player died");
-            //death stuff here
+            playerDead();
         }
 
         for(int i = 0; i < hearts.Length; i++) {
