@@ -22,6 +22,7 @@ public class DeathScreen : MonoBehaviour {
         deathScreenActive = false;
         levelSelectUI.SetActive(true);
         LevelSelect.levelSelectActive = true;
+        PlayerController.playerHealth = 10;
     }
 
     public void Quit() {

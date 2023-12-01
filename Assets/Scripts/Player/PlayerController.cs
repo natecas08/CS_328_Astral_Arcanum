@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     public float collisionOffset = 0.05f;
 
     //health variables
-    public int playerHealth = 10;
+    public static int playerHealth = 10;
     public int totalPlayerHealth = 10;
     public Image[] hearts;
     public Sprite fullHeart;

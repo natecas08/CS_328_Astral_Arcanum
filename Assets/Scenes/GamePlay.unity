@@ -328,7 +328,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &91258305
 RectTransform:
   m_ObjectHideFlags: 0
@@ -22602,7 +22602,6 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   collisionOffset: 0.05
-  playerHealth: 10
   totalPlayerHealth: 10
   hearts:
   - {fileID: 1189894736}
@@ -22617,6 +22616,7 @@ MonoBehaviour:
   - {fileID: 1193188368}
   fullHeart: {fileID: 21300000, guid: 3ba3f0bf80aa80d41825c1857ba02e52, type: 3}
   emptyHeart: {fileID: 21300000, guid: f9d36bd366a4c9645ab5dae278e36864, type: 3}
+  deathScreenUI: {fileID: 91258304}
   spellSelected: 0
 --- !u!114 &7880294656687601582
 MonoBehaviour:
