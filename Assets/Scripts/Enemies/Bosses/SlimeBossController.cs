@@ -27,6 +27,9 @@ public class SlimeBossController : MonoBehaviour
     public float targetRange = 2f; //distance threshold that triggers hostile mode
     public GameObject slimePrefab;
 
+    public Sprite normalSprite;
+    public Sprite squishedSprite;
+
     Rigidbody2D rb;
     Animator animator;
     GameObject player;
@@ -154,7 +157,9 @@ public class SlimeBossController : MonoBehaviour
         */
 
         rb.velocity = new Vector2(0f, 0f);
+        GetComponent<SpriteRenderer>().sprite = squishedSprite;
         yield return new WaitForSeconds(8);
+        GetComponent<SpriteRenderer>().sprite = normalSprite;
         hit = false;
     }
 
