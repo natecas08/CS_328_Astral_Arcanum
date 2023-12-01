@@ -311,6 +311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelSelectUI: {fileID: 2053694851}
+  hudUI: {fileID: 578482224}
   player: {fileID: 7880294656687601580}
 --- !u!1 &91258304
 GameObject:
@@ -3708,7 +3709,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1259322100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3806,6 +3807,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   titleScreenUI: {fileID: 1098197333}
   levelSelectUI: {fileID: 2053694851}
+  hudUI: {fileID: 578482224}
 --- !u!1 &1279078356
 GameObject:
   m_ObjectHideFlags: 0
@@ -22230,8 +22232,8 @@ Transform:
   m_GameObject: {fileID: 2038046952}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.9, y: 8, z: -5}
-  m_LocalScale: {x: 6, y: 5.3016, z: 0}
+  m_LocalPosition: {x: 1.42, y: 9.7, z: -5}
+  m_LocalScale: {x: 10, y: 10, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

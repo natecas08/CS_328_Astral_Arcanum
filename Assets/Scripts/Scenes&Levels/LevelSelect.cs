@@ -5,6 +5,7 @@ using UnityEngine;
 public class LevelSelect : MonoBehaviour {
     public static bool levelSelectActive = false;
     public GameObject levelSelectUI;
+    public GameObject hudUI;
     public GameObject player;
 
     // Start is called before the first frame update
@@ -20,6 +21,7 @@ public class LevelSelect : MonoBehaviour {
     public void Level1() {
         levelSelectUI.SetActive(false);
         levelSelectActive = false;
+        hudUI.SetActive(true);
         Time.timeScale = 1f;
         player.transform.position = new Vector3(0, 0, 0);
     }
@@ -27,6 +29,7 @@ public class LevelSelect : MonoBehaviour {
     public void Level2() {
         levelSelectUI.SetActive(false);
         levelSelectActive = false;
+        hudUI.SetActive(true);
         Time.timeScale = 1f;
         //return when create level 2
     }
@@ -34,6 +37,7 @@ public class LevelSelect : MonoBehaviour {
     public void Level3() {
         levelSelectUI.SetActive(false);
         levelSelectActive = false;
+        hudUI.SetActive(true);
         Time.timeScale = 1f;
         //return when create level 3
     }
