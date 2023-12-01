@@ -8,6 +8,7 @@ TagManager:
   - Burnable
   - Repair Spell Sheet
   - Slime
+  - Ghost
   layers:
   - Default
   - TransparentFX
