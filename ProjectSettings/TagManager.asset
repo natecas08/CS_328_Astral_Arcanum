@@ -9,6 +9,7 @@ TagManager:
   - Repair Spell Sheet
   - Slime
   - Ghost
+  - Health Powerup
   layers:
   - Default
   - TransparentFX
