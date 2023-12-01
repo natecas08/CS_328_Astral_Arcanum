@@ -1326,6 +1326,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 2130758532}
   titleScreenUI: {fileID: 1098197333}
+  hudUI: {fileID: 578482224}
 --- !u!1 &527571731
 GameObject:
   m_ObjectHideFlags: 0
@@ -23020,6 +23021,8 @@ MonoBehaviour:
     maxNormalAngle: 0
   collisionOffset: 0.05
   totalPlayerHealth: 10
+  invulnerable: 0
+  invulnSec: 1
   hearts:
   - {fileID: 1189894736}
   - {fileID: 990443397}
@@ -23034,6 +23037,7 @@ MonoBehaviour:
   fullHeart: {fileID: 21300000, guid: 3ba3f0bf80aa80d41825c1857ba02e52, type: 3}
   emptyHeart: {fileID: 21300000, guid: f9d36bd366a4c9645ab5dae278e36864, type: 3}
   deathScreenUI: {fileID: 91258304}
+  hudUI: {fileID: 578482224}
   spellSelected: 0
 --- !u!114 &7880294656687601582
 MonoBehaviour:
