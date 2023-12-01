@@ -150,7 +150,7 @@ public class SlimeBossController : MonoBehaviour
 
     IEnumerator playerBreak()
     {
-        /*
+        /* something about this is broken
         rb.velocity = new Vector2(moveSpeed*2, 0f);
         transform.position = Vector2.MoveTowards(transform.position, new Vector2((target.position.x) + 0.5f * (-rb.velocity.x), transform.position.y), moveSpeed * 2 * Time.deltaTime);
         yield return new WaitForSeconds(5);
