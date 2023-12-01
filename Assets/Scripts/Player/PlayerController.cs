@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     // Enemy damage values
-    public static int slimeDamage = 10;
+    public static int slimeDamage = 1;
 
     //public vars
     public static Vector3 playerLocation;
@@ -15,7 +16,12 @@ public class PlayerController : MonoBehaviour
     public ContactFilter2D movementFilter;
     public float collisionOffset = 0.05f;
 
-    public int playerHealth = 100;
+    //health variables
+    public int playerHealth = 10;
+    public int totalPlayerHealth = 10;
+    public Image[] hearts;
+    public Sprite fullHeart;
+    public Sprite emptyHeart;
 
     //private vars
     Vector2 movementInput;
@@ -46,6 +52,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        checkHealth();
         if(Input.GetKeyDown(KeyCode.Keypad1) || Input.GetKeyDown(KeyCode.Alpha1))
         {
             if(fireEnabled)
@@ -215,23 +222,39 @@ public class PlayerController : MonoBehaviour
             //player hit
             playerHealth -= slimeDamage;
             Debug.Log("player health: " + playerHealth);
-            checkHealth();
         }
     }
 
     private void checkHealth()
     {
-        if(playerHealth >= 100)
-        {
-            //player health maxed
-            playerHealth = 100;
+        if(playerHealth > totalPlayerHealth) {
+            playerHealth = totalPlayerHealth;
         }
-        else if(playerHealth <= 0)
-        {
+        if(playerHealth <= 0) {
             playerHealth = 0;
             Debug.Log("Player died");
             //death stuff here
         }
+
+        for(int i = 0; i < hearts.Length; i++) {
+            //set filled hearts to full, empty hearts to empty
+            if(i < playerHealth) {
+                hearts[i].sprite = fullHeart;
+            } else {
+                hearts[i].sprite = emptyHeart;
+            }
+
+            //enable all hearts
+            if(i < totalPlayerHealth) {
+                hearts[i].enabled = true;
+            } else {
+                hearts[i].enabled = false;
+            }
+        }
+    }
+
+    private void playerDead() {
+        
     }
 }
 
