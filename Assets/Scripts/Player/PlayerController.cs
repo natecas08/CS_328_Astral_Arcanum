@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     // Enemy damage values
     public static int slimeDamage = 1;
     public static int slimeSlowTime = 2;
-    public static int slimeBossStunTime = 1;
+    public static int slimeBossStunTime = 2;
     public static int ghostDamage = 1;
 
     //boss damage values

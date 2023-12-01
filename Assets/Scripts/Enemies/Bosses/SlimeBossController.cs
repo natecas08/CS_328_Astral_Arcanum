@@ -158,7 +158,7 @@ public class SlimeBossController : MonoBehaviour
 
         rb.velocity = new Vector2(0f, 0f);
         GetComponent<SpriteRenderer>().sprite = squishedSprite;
-        yield return new WaitForSeconds(8);
+        yield return new WaitForSeconds(6);
         GetComponent<SpriteRenderer>().sprite = normalSprite;
         hit = false;
     }
