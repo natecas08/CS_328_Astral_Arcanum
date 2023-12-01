@@ -16,7 +16,7 @@ public class PauseMenu : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if(Input.GetKeyDown(KeyCode.Escape)) {
+        if(Input.GetKeyDown(KeyCode.Escape) && !TitleScreen.titleScreenActive && !LevelSelect.levelSelectActive && !DeathScreen.deathScreenActive) {
             if(isPaused) {
                 Resume();
             } else {
@@ -27,13 +27,13 @@ public class PauseMenu : MonoBehaviour {
 
     public void Resume() {
         pauseMenuUI.SetActive(false);
-        hudUI.SetActive(true);
+        //hudUI.SetActive(true);
         Time.timeScale = 1f;
         isPaused = false;
     }
 
     void Pause() {
-        hudUI.SetActive(false);
+        //hudUI.SetActive(false);
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
