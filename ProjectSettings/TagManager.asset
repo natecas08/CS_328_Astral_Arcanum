@@ -11,6 +11,7 @@ TagManager:
   - Ghost
   - Health Powerup
   - slimeBoss
+  - Fixable
   layers:
   - Default
   - TransparentFX
