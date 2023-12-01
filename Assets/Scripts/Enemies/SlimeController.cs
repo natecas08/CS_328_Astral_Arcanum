@@ -11,8 +11,11 @@ public enum slimeState
 
 public class SlimeController : MonoBehaviour
 {
+    public bool isWaiting = false;
     IEnumerator waiting(int sec)
     {
+        isWaiting = true;
+        float start = Time.time;
         float velX = Random.Range(0, 2);
         float velY = Random.Range(0, 2);
         int dir = Random.Range(0, 1);
@@ -22,18 +25,27 @@ public class SlimeController : MonoBehaviour
         }
 
 
-        TryMove(new Vector2(velX * dir, velY * dir));
-        yield return new WaitForSeconds(sec);
+        while (Time.time < (start + sec))
+        {
+            TryMove(new Vector2(velX * dir, velY * dir));
+            yield return null;
+        }
 
         rb.velocity = new Vector2(0, 0);
         yield return new WaitForSeconds(sec * 2);
 
-        TryMove(new Vector2(velX * -dir, velY * -dir));
-        yield return new WaitForSeconds(sec);
+        start = Time.time;
+        while (Time.time < (start + sec))
+        {
+            TryMove(new Vector2(velX * -dir, velY * -dir));
+            yield return null;
+        }
 
         rb.velocity = new Vector2(0, 0);
         yield return new WaitForSeconds(sec * 2);
-
+        
+        isWaiting = false;
+  
     }
 
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
@@ -96,7 +108,10 @@ public class SlimeController : MonoBehaviour
     }
     void wandering()
     {
-        StartCoroutine(waiting(4));
+        if (!isWaiting)
+        {
+            StartCoroutine(waiting(2));
+        }
     }
 
 
