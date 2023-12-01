@@ -19,7 +19,7 @@ public class GhostController : MonoBehaviour
     public ghostState curState = ghostState.Wandering;
     public Transform target;
     public float moveSpeed = 0.8f;
-    public float targetRange = 2f; //distance threshold that triggers hostile mode
+    public float targetRange = 10f; //distance threshold that triggers hostile mode
 
     Rigidbody2D rb;
     Animator animator;
@@ -69,7 +69,7 @@ public class GhostController : MonoBehaviour
 
         void wandering()
         {
-            StartCoroutine(waiting(4));
+            //StartCoroutine(waiting(4));
         }
 
         IEnumerator waiting(int sec)

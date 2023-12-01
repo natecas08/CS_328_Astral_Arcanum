@@ -95,9 +95,11 @@ public class PlayerController : MonoBehaviour
             switch (spellSelected)
             {
                 case 1:
-                    fireCasted = true;
-                    Debug.Log("Fire Casted Start");
-                    StartCoroutine(fireDuration());
+                    if(fireEnabled) {
+                        fireCasted = true;
+                        Debug.Log("Fire Casted Start");
+                        StartCoroutine(fireDuration());
+                    }
                     break;
                 default:
                     //do nothing
@@ -244,7 +246,9 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator slimeBossStun() {
         moveSpeed = 0f;
+        fireEnabled = false;
         yield return new WaitForSeconds(slimeBossStunTime);
+        fireEnabled = true;
         moveSpeed = 1f;
     }
 
