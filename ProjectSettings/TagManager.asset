@@ -10,6 +10,7 @@ TagManager:
   - Slime
   - Ghost
   - Health Powerup
+  - slimeBoss
   layers:
   - Default
   - TransparentFX

@@ -11,6 +11,31 @@ public enum slimeState
 
 public class SlimeController : MonoBehaviour
 {
+    IEnumerator waiting(int sec)
+    {
+        float velX = Random.Range(0, 2);
+        float velY = Random.Range(0, 2);
+        int dir = Random.Range(0, 1);
+        if (dir == 0)
+        {
+            dir = -1;
+        }
+
+
+        TryMove(new Vector2(velX * dir, velY * dir));
+        yield return new WaitForSeconds(sec);
+
+        rb.velocity = new Vector2(0, 0);
+        yield return new WaitForSeconds(sec * 2);
+
+        TryMove(new Vector2(velX * -dir, velY * -dir));
+        yield return new WaitForSeconds(sec);
+
+        rb.velocity = new Vector2(0, 0);
+        yield return new WaitForSeconds(sec * 2);
+
+    }
+
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
     public ContactFilter2D movementFilter;
     public float collisionOffset = 0.05f;
@@ -67,73 +92,49 @@ public class SlimeController : MonoBehaviour
             curState = slimeState.Wandering;
         }
 
-        void wandering()
-        {
-            StartCoroutine(waiting(4));
-        }
-
-        IEnumerator waiting(int sec)
-        {
-            float velX = Random.Range(0, 2);
-            float velY = Random.Range(0, 2);
-            int dir = Random.Range(0, 1);
-            if (dir == 0)
-            {
-                dir = -1;
-            }
-
-
-            TryMove(new Vector2(velX * dir, velY * dir));
-            yield return new WaitForSeconds(sec);
-
-            rb.velocity = new Vector2(0, 0);
-            yield return new WaitForSeconds(sec*2);
-
-            TryMove(new Vector2(velX * -dir, velY * -dir));
-            yield return new WaitForSeconds(sec);
-
-            rb.velocity = new Vector2(0, 0);
-            yield return new WaitForSeconds(sec*2);
-
-        }
-
-        void hostile()
-        {
-            if(!hit)
-            {
-                if (transform.position.x > target.position.x)
-                {
-                    //target is left
-                    transform.localScale = new Vector2(-1, 1);
-                    rb.velocity = new Vector2(-moveSpeed, 0f);
-                    transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, transform.position.y), moveSpeed * Time.deltaTime);
-                }
-                else if (transform.position.x < target.position.x)
-                {
-                    //target is right
-                    transform.localScale = new Vector2(1, 1);
-                    rb.velocity = new Vector2(moveSpeed, 0f);
-                    transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, transform.position.y), moveSpeed * Time.deltaTime);
-                }
-
-                if (transform.position.y > target.position.y)
-                {
-                    //target is left
-                    //transform.localScale = new Vector2(1, -1);
-                    rb.velocity = new Vector2(0f, -moveSpeed);
-                    transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, transform.position.y), moveSpeed * Time.deltaTime);
-                }
-                else if (transform.position.y < target.position.y)
-                {
-                    //target is right
-                    //transform.localScale = new Vector2(1, 1);
-                    rb.velocity = new Vector2(0f, moveSpeed);
-                    transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, transform.position.y), moveSpeed * Time.deltaTime);
-                }
-            } 
-        }
+        
+    }
+    void wandering()
+    {
+        StartCoroutine(waiting(4));
     }
 
+
+    void hostile()
+    {
+        if (!hit)
+        {
+            if (transform.position.x > target.position.x)
+            {
+                //target is left
+                transform.localScale = new Vector2(-1, 1);
+                rb.velocity = new Vector2(-moveSpeed, 0f);
+                transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, transform.position.y), moveSpeed * Time.deltaTime);
+            }
+            else if (transform.position.x < target.position.x)
+            {
+                //target is right
+                transform.localScale = new Vector2(1, 1);
+                rb.velocity = new Vector2(moveSpeed, 0f);
+                transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, transform.position.y), moveSpeed * Time.deltaTime);
+            }
+
+            if (transform.position.y > target.position.y)
+            {
+                //target is left
+                //transform.localScale = new Vector2(1, -1);
+                rb.velocity = new Vector2(0f, -moveSpeed);
+                transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, transform.position.y), moveSpeed * Time.deltaTime);
+            }
+            else if (transform.position.y < target.position.y)
+            {
+                //target is right
+                //transform.localScale = new Vector2(1, 1);
+                rb.velocity = new Vector2(0f, moveSpeed);
+                transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, transform.position.y), moveSpeed * Time.deltaTime);
+            }
+        }
+    }
     private bool TryMove(Vector2 direction)
     {
         int count = rb.Cast(

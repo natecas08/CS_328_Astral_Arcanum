@@ -8,6 +8,10 @@ public class PlayerController : MonoBehaviour
 {
     // Enemy damage values
     public static int slimeDamage = 1;
+    public static int ghostDamage = 1;
+
+    //boss damage values
+    public static int slimeBossDamage = 1;
 
     //public vars
     public static Vector3 playerLocation;
@@ -223,6 +227,28 @@ public class PlayerController : MonoBehaviour
             //player hit
             playerHealth -= slimeDamage;
             Debug.Log("player health: " + playerHealth);
+        }
+
+        if (other.gameObject.CompareTag("Ghost"))
+        {
+            //player hit
+            playerHealth -= ghostDamage;
+            Debug.Log("player health: " + playerHealth);
+        }
+
+        if (other.gameObject.CompareTag("slimeBoss"))
+        {
+            //player hit
+            if(SlimeBossController.stateNum == 4)
+            {
+                playerHealth -= slimeBossDamage * 3;
+                Debug.Log("player health: " + playerHealth);
+            }
+            else
+            {
+                playerHealth -= slimeBossDamage;
+                Debug.Log("player health: " + playerHealth);
+            }
         }
     }
 
