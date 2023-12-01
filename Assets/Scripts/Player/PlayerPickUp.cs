@@ -19,6 +19,7 @@ public class PlayerPickUp : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        //Spells
         if(other.gameObject.CompareTag("Fire Spell Sheet"))
         {
             Destroy(other.gameObject);
@@ -29,6 +30,12 @@ public class PlayerPickUp : MonoBehaviour
         {
             Destroy(other.gameObject);
             PlayerController.repairEnabled = true;
+        }
+
+        //Powerups
+        if(other.gameObject.CompareTag("Health Powerup")) {
+            Destroy(other.gameObject);
+            PlayerController.playerHealth += 3;
         }
     }
 }
