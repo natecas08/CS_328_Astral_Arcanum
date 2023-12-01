@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     // Enemy damage values
     public static int slimeDamage = 1;
+    public static int slimeSlowTime = 1;
     public static int ghostDamage = 1;
 
     //boss damage values
@@ -243,6 +244,11 @@ public class PlayerController : MonoBehaviour
             {
                 //player hit
                 StartCoroutine(OnHit(slimeDamage));
+                /*
+                moveSpeed = moveSpeed/2;
+                yield return new WaitForSeconds(slimeSlowTime);
+                moveSpeed = moveSpeed*2;
+                */
             }
 
             if (other.gameObject.CompareTag("Ghost"))
