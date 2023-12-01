@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     public Image[] hearts;
     public Sprite fullHeart;
     public Sprite emptyHeart;
+    public GameObject deathScreenUI;
 
     //private vars
     Vector2 movementInput;
@@ -254,7 +255,9 @@ public class PlayerController : MonoBehaviour
     }
 
     private void playerDead() {
-        
+        Time.timeScale = 0f;
+        deathScreenUI.SetActive(true);
+        DeathScreen.deathScreenActive = true;
     }
 }
 
