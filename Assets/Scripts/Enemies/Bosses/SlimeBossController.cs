@@ -85,7 +85,7 @@ public class SlimeBossController : MonoBehaviour
         if (inRange(targetRange) && curState != slimeBossState.Death)
         {
             curState = slimeBossState.Following;
-            if(Random.Range(1, 300) == 1) {
+            if(Random.Range(1, 400) == 1) {
                 curState = slimeBossState.Spawning;
             }
         }
@@ -108,14 +108,14 @@ public class SlimeBossController : MonoBehaviour
                 //target is left
                 transform.localScale = new Vector2(-1, 1);
                 rb.velocity = new Vector2(-moveSpeed, 0f);
-                transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, transform.position.y), moveSpeed * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, target.position.y), moveSpeed * Time.deltaTime);
             }
             else if (transform.position.x < target.position.x)
             {
                 //target is right
                 transform.localScale = new Vector2(1, 1);
                 rb.velocity = new Vector2(moveSpeed, 0f);
-                transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, transform.position.y), moveSpeed * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, target.position.y), moveSpeed * Time.deltaTime);
             }
 
             if (transform.position.y > target.position.y)
@@ -123,17 +123,41 @@ public class SlimeBossController : MonoBehaviour
                 //target is above
                 //transform.localScale = new Vector2(1, -1);
                 rb.velocity = new Vector2(0f, -moveSpeed);
-                transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, transform.position.y), moveSpeed * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, target.position.y), moveSpeed * Time.deltaTime);
             }
             else if (transform.position.y < target.position.y)
             {
                 //target is below
                 //transform.localScale = new Vector2(1, 1);
                 rb.velocity = new Vector2(0f, moveSpeed);
-                transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, transform.position.y), moveSpeed * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, target.position.y), moveSpeed * Time.deltaTime);
             }
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            hit = true;
+            Debug.Log("Player Hit"); 
+            StartCoroutine(playerBreak());
+        }
+    }
+
+    IEnumerator playerBreak()
+    {
+        /*
+        rb.velocity = new Vector2(moveSpeed*2, 0f);
+        transform.position = Vector2.MoveTowards(transform.position, new Vector2((target.position.x) + 0.5f * (-rb.velocity.x), transform.position.y), moveSpeed * 2 * Time.deltaTime);
+        yield return new WaitForSeconds(5);
+        */
+
+        rb.velocity = new Vector2(0f, 0f);
+        yield return new WaitForSeconds(8);
+        hit = false;
+    }
+
     void death()
     {
         //death
@@ -145,7 +169,7 @@ public class SlimeBossController : MonoBehaviour
         StartCoroutine(chargeUp());
         if(!charging)
         {
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, transform.position.y), moveSpeed * 3 * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, target.position.y), moveSpeed * 3 * Time.deltaTime);
         }
     }
 

@@ -109,14 +109,14 @@ public class SlimeController : MonoBehaviour
                 //target is left
                 transform.localScale = new Vector2(-1, 1);
                 rb.velocity = new Vector2(-moveSpeed, 0f);
-                transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, transform.position.y), moveSpeed * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, target.position.y), moveSpeed * Time.deltaTime);
             }
             else if (transform.position.x < target.position.x)
             {
                 //target is right
                 transform.localScale = new Vector2(1, 1);
                 rb.velocity = new Vector2(moveSpeed, 0f);
-                transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, transform.position.y), moveSpeed * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, target.position.y), moveSpeed * Time.deltaTime);
             }
 
             if (transform.position.y > target.position.y)
@@ -124,14 +124,14 @@ public class SlimeController : MonoBehaviour
                 //target is left
                 //transform.localScale = new Vector2(1, -1);
                 rb.velocity = new Vector2(0f, -moveSpeed);
-                transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, transform.position.y), moveSpeed * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, target.position.y), moveSpeed * Time.deltaTime);
             }
             else if (transform.position.y < target.position.y)
             {
                 //target is right
                 //transform.localScale = new Vector2(1, 1);
                 rb.velocity = new Vector2(0f, moveSpeed);
-                transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, transform.position.y), moveSpeed * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, target.position.y), moveSpeed * Time.deltaTime);
             }
         }
     }

@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     // Enemy damage values
     public static int slimeDamage = 1;
     public static int slimeSlowTime = 2;
+    public static int slimeBossStunTime = 1;
     public static int ghostDamage = 1;
 
     //boss damage values
@@ -241,6 +242,12 @@ public class PlayerController : MonoBehaviour
         moveSpeed = moveSpeed*2;
     }
 
+    IEnumerator slimeBossStun() {
+        moveSpeed = 0f;
+        yield return new WaitForSeconds(slimeBossStunTime);
+        moveSpeed = 1f;
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!invulnerable)
@@ -262,14 +269,8 @@ public class PlayerController : MonoBehaviour
             if (other.gameObject.CompareTag("slimeBoss"))
             {
                 //player hit
-                if(SlimeBossController.stateNum == 4)
-                {
-                    StartCoroutine(OnHit(slimeBossDamage * 3));
-                }
-                else
-                {
-                    StartCoroutine(OnHit(slimeBossDamage));
-                }
+                StartCoroutine(OnHit(slimeBossDamage));
+                StartCoroutine(slimeBossStun());
             }
         }
     }
