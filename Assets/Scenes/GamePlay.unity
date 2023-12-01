@@ -311,6 +311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelSelectUI: {fileID: 2053694851}
+  player: {fileID: 7880294656687601580}
 --- !u!1 &91258304
 GameObject:
   m_ObjectHideFlags: 0
@@ -3577,7 +3578,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1259322100
 MonoBehaviour:
   m_ObjectHideFlags: 0
