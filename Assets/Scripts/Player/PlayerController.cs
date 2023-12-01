@@ -35,6 +35,10 @@ public class PlayerController : MonoBehaviour
     public GameObject deathScreenUI;
     public GameObject hudUI;
 
+    //sound effects
+    public AudioSource fireSpellSFX;
+    public AudioSource slimeHitSFX;
+
     //private vars
     Vector2 movementInput;
     Rigidbody2D rb;
@@ -98,6 +102,7 @@ public class PlayerController : MonoBehaviour
                     if(fireEnabled) {
                         fireCasted = true;
                         Debug.Log("Fire Casted Start");
+                        fireSpellSFX.Play();
                         StartCoroutine(fireDuration());
                     }
                     break;
@@ -260,6 +265,8 @@ public class PlayerController : MonoBehaviour
             if (other.gameObject.CompareTag("Slime"))
             {
                 //player hit
+                Debug.Log("THE SLIME HAS HIT THE PLAYER BUT HE SHOULD NOT BE DEAD");
+                slimeHitSFX.Play();
                 StartCoroutine(OnHit(slimeDamage));
                 StartCoroutine(slimeSlowDuration());
             }
@@ -273,6 +280,7 @@ public class PlayerController : MonoBehaviour
             if (other.gameObject.CompareTag("slimeBoss"))
             {
                 //player hit
+                slimeHitSFX.Play();
                 StartCoroutine(OnHit(slimeBossDamage));
                 StartCoroutine(slimeBossStun());
             }

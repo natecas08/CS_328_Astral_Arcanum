@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerPickUp : MonoBehaviour
 {
+    public AudioSource healthPickup;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +35,7 @@ public class PlayerPickUp : MonoBehaviour
 
         //Powerups
         if(other.gameObject.CompareTag("Health Powerup")) {
+            healthPickup.Play();
             Destroy(other.gameObject);
             PlayerController.playerHealth += 3;
         }
