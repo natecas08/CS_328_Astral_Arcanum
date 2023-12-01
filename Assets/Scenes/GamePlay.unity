@@ -23116,6 +23116,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30a17fa8bf1363341b3a5bc44b7f74ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 7880294656687601603}
+  main: {fileID: 8300000, guid: ac5d78f210d150640a685a55d783209a, type: 3}
+  level_1: {fileID: 8300000, guid: 66b99d61ace28cd4caf2ed4430306836, type: 3}
+  level_2: {fileID: 0}
+  level_3: {fileID: 0}
+  isPlaying: 0
 --- !u!82 &7880294656687601603
 AudioSource:
   m_ObjectHideFlags: 0
@@ -23127,7 +23133,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -2189485813638822845, guid: 78b4bca9f2467824a851b75b29eea754, type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1

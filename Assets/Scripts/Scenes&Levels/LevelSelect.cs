@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LevelSelect : MonoBehaviour {
     public static bool levelSelectActive = false;
+    public static int levelSelected = 0;
     public GameObject levelSelectUI;
     public GameObject hudUI;
     public GameObject player;
@@ -22,6 +23,7 @@ public class LevelSelect : MonoBehaviour {
         levelSelectUI.SetActive(false);
         levelSelectActive = false;
         hudUI.SetActive(true);
+        levelSelected = 1;
         Time.timeScale = 1f;
         player.transform.position = new Vector3(0, 0, 0);
     }
@@ -30,6 +32,7 @@ public class LevelSelect : MonoBehaviour {
         levelSelectUI.SetActive(false);
         levelSelectActive = false;
         hudUI.SetActive(true);
+        levelSelected = 2;
         Time.timeScale = 1f;
         //return when create level 2
     }
@@ -38,6 +41,7 @@ public class LevelSelect : MonoBehaviour {
         levelSelectUI.SetActive(false);
         levelSelectActive = false;
         hudUI.SetActive(true);
+        levelSelected = 3;
         Time.timeScale = 1f;
         //return when create level 3
     }
