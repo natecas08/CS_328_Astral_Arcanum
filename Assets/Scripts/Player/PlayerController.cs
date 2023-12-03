@@ -106,12 +106,27 @@ public class PlayerController : MonoBehaviour
                         StartCoroutine(fireDuration());
                     }
                     break;
+                case 2:
+                    if (repairEnabled)
+                    {
+                        repairCasted = true;
+                        Debug.Log("Repair Casted");
+                        StartCoroutine(repairDuration());
+                    }
+                    break;
                 default:
                     //do nothing
                     break;
             }       
         }
 
+    }
+
+    IEnumerator repairDuration()
+    {
+        yield return new WaitForSeconds(2);
+        repairCasted = false;
+        Debug.Log("Repair complete");
     }
 
     IEnumerator fireDuration()

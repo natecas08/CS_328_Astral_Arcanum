@@ -26,7 +26,8 @@ public class PlayerInteractions : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Fixable") && PlayerController.repairEnabled == true && PlayerController.repairCasted == true)
         {
-            
+            Destroy(other.gameObject);
+            Debug.Log("Fixable item has been repaired");
         }
     }
 }
