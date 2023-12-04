@@ -171,9 +171,15 @@ public class SlimeController : MonoBehaviour
 
     IEnumerator playerBreak()
     {
+        /*
         rb.velocity = new Vector2(moveSpeed*2, 0f);
-        transform.position = Vector2.MoveTowards(transform.position, new Vector2((target.position.x) + 0.5f * (-rb.velocity.x), transform.position.y), moveSpeed * 2 * Time.deltaTime);
+        Vector2 backOff;
+        backOff.x = ((target.position.x) + 0.1f * (-rb.velocity.x));
+        backOff.y = transform.position.y;
+
+        transform.position = Vector2.MoveTowards(transform.position, backOff, moveSpeed * 2 * Time.deltaTime);
         yield return new WaitForSeconds(5);
+        */
 
         rb.velocity = new Vector2(0f, 0f);
         yield return new WaitForSeconds(2);
