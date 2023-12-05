@@ -13,6 +13,8 @@ public enum slimeBossState
 
 public class SlimeBossController : MonoBehaviour
 {
+    public static int health = 3;
+
     public bool charging = false;
     public static int stateNum = 1;
 
@@ -57,6 +59,10 @@ public class SlimeBossController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(health <= 0)
+        {
+            death();
+        }
         switch (curState)
         {
             case (slimeBossState.Idle):
@@ -166,6 +172,7 @@ public class SlimeBossController : MonoBehaviour
     void death()
     {
         //death
+        Destroy(rb.gameObject);
     }
     void slam()
     {

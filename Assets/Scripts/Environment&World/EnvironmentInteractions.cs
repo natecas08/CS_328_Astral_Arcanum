@@ -19,7 +19,7 @@ public class PlayerInteractions : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if ((other.gameObject.CompareTag("Burnable") || other.gameObject.CompareTag("Slime") || other.gameObject.CompareTag("Ghost") || other.gameObject.CompareTag("slimeBoss")) && PlayerController.fireEnabled == true && PlayerController.fireCasted == true)
+        if ((other.gameObject.CompareTag("Burnable") || other.gameObject.CompareTag("Slime") || other.gameObject.CompareTag("Ghost")) && PlayerController.fireEnabled == true && PlayerController.fireCasted == true)
         {
             Destroy(other.gameObject);
             Debug.Log("this should only activate when the player casts the fire spell");
@@ -28,6 +28,11 @@ public class PlayerInteractions : MonoBehaviour
         {
             Destroy(other.gameObject);
             Debug.Log("Fixable item has been repaired");
+        }
+        if (other.gameObject.CompareTag("slimeBoss") && PlayerController.fireCasted == true && PlayerController.fireEnabled == true)
+        {
+            SlimeBossController.health -= 1;
+            Debug.Log("slime boss health: " + SlimeBossController.health);
         }
     }
 }
