@@ -13,6 +13,7 @@ TagManager:
   - slimeBoss
   - Fixable
   - repairSpell
+  - Lightning Powerup
   layers:
   - Default
   - TransparentFX

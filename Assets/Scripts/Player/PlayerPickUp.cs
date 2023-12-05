@@ -37,7 +37,14 @@ public class PlayerPickUp : MonoBehaviour
         if(other.gameObject.CompareTag("Health Powerup")) {
             healthPickup.Play();
             Destroy(other.gameObject);
-            PlayerController.playerHealth += 3;
+            PlayerController.numHealthPowerups += 1;
+            PlayerController.discoveredHealthPowerup = true;
+        }
+        if(other.gameObject.CompareTag("Lightning Powerup")) {
+            //play lightning pickup sound
+            Destroy(other.gameObject);
+            PlayerController.numLightningPowerups += 1;
+            PlayerController.discoveredLightningPowerup = true;
         }
     }
 }

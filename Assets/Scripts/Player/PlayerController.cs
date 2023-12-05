@@ -39,6 +39,12 @@ public class PlayerController : MonoBehaviour
     public AudioSource fireSpellSFX;
     public AudioSource slimeHitSFX;
 
+    //powerup vars
+    public static int numHealthPowerups = 0;
+    public static bool discoveredHealthPowerup = false;
+    public static int numLightningPowerups = 0;
+    public static bool discoveredLightningPowerup = false;
+
     //private vars
     Vector2 movementInput;
     Rigidbody2D rb;
@@ -93,12 +99,28 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Invalid Spell Selected");
             }
         }
+        if(Input.GetKeyDown(KeyCode.Keypad6) || Input.GetKeyDown(KeyCode.Alpha6)) {
+            if(discoveredHealthPowerup) {
+                spellSelected = 6;
+                Debug.Log("Health Powerup Selected");
+            } else {
+                Debug.Log("Invalid Spell Selected");
+            }
+        }
+        if(Input.GetKeyDown(KeyCode.Keypad7) || Input.GetKeyDown(KeyCode.Alpha7)) {
+            if(discoveredLightningPowerup) {
+                spellSelected = 6;
+                Debug.Log("Lightning Powerup Selected");
+            } else {
+                Debug.Log("Invalid Spell Selected");
+            }
+        }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0))
         {
             switch (spellSelected)
             {
-                case 1:
+                case 1: //fire
                     if(fireEnabled) {
                         fireCasted = true;
                         Debug.Log("Fire Casted Start");
@@ -106,12 +128,23 @@ public class PlayerController : MonoBehaviour
                         StartCoroutine(fireDuration());
                     }
                     break;
-                case 2:
+                case 2: //repair
                     if (repairEnabled)
                     {
                         repairCasted = true;
                         Debug.Log("Repair Casted");
                         StartCoroutine(repairDuration());
+                    }
+                    break;
+                case 6: //health powerup
+                    if(numHealthPowerups > 0) {
+                        playerHealth += 3;
+                        Debug.Log("Health Powerup Used");
+                    }
+                    break;
+                case 7: //lightning powerup
+                    if(numLightningPowerups > 0) {
+                        //do lightning stuff
                     }
                     break;
                 default:
