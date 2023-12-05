@@ -6,6 +6,10 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    //spell duration values
+    public float fireTimeDuration = 1.0f;
+    public float fireCoolDownDuration = 1.0f;
+
     // Enemy damage values
     public static int slimeDamage = 1;
     public static int slimeSlowTime = 2;
@@ -74,7 +78,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //start every frame by updating health and checking if player died.
         checkHealth();
+
+        //hotbar selections
         if(Input.GetKeyDown(KeyCode.Keypad1) || Input.GetKeyDown(KeyCode.Alpha1))
         {
             if(fireEnabled)
@@ -116,6 +123,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        //hotbar casting
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0))
         {
             switch (spellSelected)
@@ -155,6 +163,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    //spell durations
     IEnumerator repairDuration()
     {
         yield return new WaitForSeconds(2);
@@ -164,9 +173,18 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator fireDuration()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(fireTimeDuration);
         fireCasted = false;
         Debug.Log("Fire Casted Complete");
+        fireEnabled = false;
+        StartCoroutine(fireCoolDown());
+    }
+
+    //spell cooldowns
+    IEnumerator fireCoolDown()
+    {
+        yield return new WaitForSeconds(fireCoolDownDuration);
+        fireEnabled = true;
     }
 
     private void FixedUpdate()
