@@ -34,6 +34,11 @@ public class PlayerInteractions : MonoBehaviour
             SlimeBossController.health -= 1;
             Debug.Log("slime boss health: " + SlimeBossController.health);
         }
+        if ((other.gameObject.CompareTag("Slime") || other.gameObject.CompareTag("Ghost")) && PlayerController.lightningUsed == true)
+        {
+            Destroy(other.gameObject);
+            Debug.Log("lightning Used");
+        }
     }
 }
 

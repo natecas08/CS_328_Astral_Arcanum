@@ -152,6 +152,13 @@ public class SlimeBossController : MonoBehaviour
             Debug.Log("Player Hit"); 
             StartCoroutine(playerBreak());
         }
+
+        if(other.gameObject.CompareTag("Fire Spell"))
+        {
+            hit = true;
+            //slime boss hit
+            StartCoroutine(playerBreak());
+        }
     }
 
     IEnumerator playerBreak()

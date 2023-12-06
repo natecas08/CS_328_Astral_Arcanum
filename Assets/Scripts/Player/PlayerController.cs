@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
     public static bool discoveredHealthPowerup = false;
     public static int numLightningPowerups = 0;
     public static bool discoveredLightningPowerup = false;
+    public static bool lightningUsed = false;
 
     //private vars
     Vector2 movementInput;
@@ -116,7 +117,7 @@ public class PlayerController : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.Keypad7) || Input.GetKeyDown(KeyCode.Alpha7)) {
             if(discoveredLightningPowerup) {
-                spellSelected = 6;
+                spellSelected = 7;
                 Debug.Log("Lightning Powerup Selected");
             } else {
                 Debug.Log("Invalid Spell Selected");
@@ -148,10 +149,15 @@ public class PlayerController : MonoBehaviour
                     if(numHealthPowerups > 0) {
                         playerHealth += 3;
                         Debug.Log("Health Powerup Used");
+                        numHealthPowerups -= 1;
                     }
                     break;
                 case 7: //lightning powerup
                     if(numLightningPowerups > 0) {
+                        lightningUsed = true;
+                        Debug.Log("Lightning used");
+                        StartCoroutine(lightningDuration());
+                        numLightningPowerups--;
                         //do lightning stuff
                     }
                     break;
@@ -178,6 +184,13 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Fire Casted Complete");
         fireEnabled = false;
         StartCoroutine(fireCoolDown());
+    }
+
+    IEnumerator lightningDuration()
+    {
+        yield return new WaitForSeconds(1);
+        lightningUsed = false;
+        Debug.Log("Lightning complete");
     }
 
     //spell cooldowns
