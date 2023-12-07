@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum slimeBossState
 {
@@ -13,7 +14,9 @@ public enum slimeBossState
 
 public class SlimeBossController : MonoBehaviour
 {
-    public static int health = 3;
+    public static float health = 3;
+    public float maxHealth = 3;
+    public Slider healthBar;
 
     public bool charging = false;
     public static int stateNum = 1;
@@ -156,8 +159,9 @@ public class SlimeBossController : MonoBehaviour
         if(other.gameObject.CompareTag("Fire Spell"))
         {
             hit = true;
+            healthBar.value = health/maxHealth;
             //slime boss hit
-            StartCoroutine(playerBreak());
+            //StartCoroutine(playerBreak());
         }
     }
 
