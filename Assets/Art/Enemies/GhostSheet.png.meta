@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5f082c8a99f5941448fda026ae2dfcec
+guid: 5d99a3018a7722141b9be59b2ac8d129
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,70 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GhostMove_0
+      name: GhostSheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 34
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f629c16451ae5441bd3149ee3bbfba5
+      internalID: -1003310268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GhostSheet_1
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 34
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef13618a1a7e9554dbd2bc6173665763
+      internalID: -1634199207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GhostSheet_2
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 34
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e666ff85c5dc09479a28966df7f2b5e
+      internalID: -848527270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GhostSheet_3
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: feb3763029e54824baff3a1efa55aec5
-      internalID: 1203075057
+      spriteID: 972276c71233aff43b98e6558045ae9a
+      internalID: 784209363
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GhostMove_1
+      name: GhostSheet_4
       rect:
         serializedVersion: 2
         x: 34
@@ -145,8 +208,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 14e166627fea4cd45ad331458db7bfa4
-      internalID: 486919475
+      spriteID: 58476c996bb39ce4f9f8008deb7c7f2d
+      internalID: -542874822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GhostSheet_5
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 0
+        width: 34
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc6737633ea3807489e8d449a7eea3d8
+      internalID: 469786670
       vertices: []
       indices: 
       edges: []
@@ -162,8 +246,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      GhostMove_0: 1203075057
-      GhostMove_1: 486919475
+      GhostSheet_0: -1003310268
+      GhostSheet_1: -1634199207
+      GhostSheet_2: -848527270
+      GhostSheet_3: 784209363
+      GhostSheet_4: -542874822
+      GhostSheet_5: 469786670
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
