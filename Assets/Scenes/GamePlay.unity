@@ -3952,7 +3952,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.64, y: 0.64}
+  m_Size: {x: 1.28, y: 1.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -3967,8 +3967,8 @@ Transform:
   m_GameObject: {fileID: 1021729423}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.48, y: 14.31, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 2.5556}
+  m_LocalPosition: {x: -6.83, y: 14.21, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 3.2946794}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1809532209}
@@ -4010,14 +4010,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 0.64, y: 0.64}
+    oldSize: {x: 2, y: 2}
+    newSize: {x: 1.28, y: 1.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.68291366, y: 0.32534707}
+  m_Size: {x: 1, y: 0.7}
   m_EdgeRadius: 0
 --- !u!50 &1021729427
 Rigidbody2D:
@@ -23728,7 +23728,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.009, y: 0.491}
+  m_AnchoredPosition: {x: 0, y: 0.75}
   m_SizeDelta: {x: 27.3876, y: 20.5534}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1809532210
