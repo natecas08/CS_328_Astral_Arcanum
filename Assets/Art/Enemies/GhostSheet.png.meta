@@ -124,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f629c16451ae5441bd3149ee3bbfba5
-      internalID: -1003310268
+      spriteID: 4a4bd3d354701c9478a2582b49736289
+      internalID: -941827962
       vertices: []
       indices: 
       edges: []
@@ -145,8 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ef13618a1a7e9554dbd2bc6173665763
-      internalID: -1634199207
+      spriteID: d0011e62d913e83439abd729492d5bdb
+      internalID: 334763871
       vertices: []
       indices: 
       edges: []
@@ -166,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5e666ff85c5dc09479a28966df7f2b5e
-      internalID: -848527270
+      spriteID: 5cb8a8fafe10ec643860e84ec58f286f
+      internalID: -257940019
       vertices: []
       indices: 
       edges: []
@@ -187,8 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 972276c71233aff43b98e6558045ae9a
-      internalID: 784209363
+      spriteID: a11192d57b34d8441a5e97cb8c3b1d8b
+      internalID: -54462136
       vertices: []
       indices: 
       edges: []
@@ -208,8 +208,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 58476c996bb39ce4f9f8008deb7c7f2d
-      internalID: -542874822
+      spriteID: 120600e663250654f8717618e9dabf90
+      internalID: -786643826
       vertices: []
       indices: 
       edges: []
@@ -229,8 +229,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bc6737633ea3807489e8d449a7eea3d8
-      internalID: 469786670
+      spriteID: 1b0727b19ea307b4fa42b5d2bbd4bb93
+      internalID: 405735956
       vertices: []
       indices: 
       edges: []
@@ -246,12 +246,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      GhostSheet_0: -1003310268
-      GhostSheet_1: -1634199207
-      GhostSheet_2: -848527270
-      GhostSheet_3: 784209363
-      GhostSheet_4: -542874822
-      GhostSheet_5: 469786670
+      GhostSheet_0: -941827962
+      GhostSheet_1: 334763871
+      GhostSheet_2: -257940019
+      GhostSheet_3: -54462136
+      GhostSheet_4: -786643826
+      GhostSheet_5: 405735956
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
