@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4f9a937117cad2344964bc35d942e4dd
+guid: f88226d8ae10fc740be2a197f6f23457
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,139 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SlimeSheet_0
+      name: TowerTiles_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbc80018a78bbfe458a3598cd4a760c3
+      internalID: 1446941117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TowerTiles_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7700e54378c86164fabc87c1cc827913
+      internalID: 485294299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TowerTiles_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5fd8c30c57a56846b3727461f7b7014
+      internalID: 835587436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TowerTiles_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12ac014866a1ff94693ff3f76ecc347d
+      internalID: 1483647075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TowerTiles_4
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b5fd9b72bfc854408a9976fd59ac834
+      internalID: -125187673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TowerTiles_5
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cead847c5ce6da84a870c96a32b307e6
+      internalID: -891730048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TowerTiles_6
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 34
-        height: 34
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +250,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4e1289bd1a724994db34f8671aedb832
-      internalID: 111047613
+      spriteID: a861229d230b6be498b38ed2623c6428
+      internalID: 1397751811
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SlimeSheet_1
+      name: TowerTiles_7
       rect:
         serializedVersion: 2
-        x: 34
+        x: 32
         y: 0
-        width: 34
-        height: 34
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +271,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a1cb28ba2e401db4c8c4e8637aa24621
-      internalID: -1508722965
+      spriteID: bdd61fc270efbcd4f9c6698cc1e6a0f1
+      internalID: -1697833113
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SlimeSheet_2
+      name: TowerTiles_8
       rect:
         serializedVersion: 2
-        x: 68
+        x: 64
         y: 0
-        width: 34
-        height: 34
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,8 +292,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 20c16bb0976481f43b3c4904a667b369
-      internalID: 1979690958
+      spriteID: 36bff25928ff14b4981f6be6383b8b63
+      internalID: 1003844907
       vertices: []
       indices: 
       edges: []
@@ -183,9 +309,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SlimeSheet_0: 111047613
-      SlimeSheet_1: -1508722965
-      SlimeSheet_2: 1979690958
+      TowerTiles_0: 1446941117
+      TowerTiles_1: 485294299
+      TowerTiles_2: 835587436
+      TowerTiles_3: 1483647075
+      TowerTiles_4: -125187673
+      TowerTiles_5: -891730048
+      TowerTiles_6: 1397751811
+      TowerTiles_7: -1697833113
+      TowerTiles_8: 1003844907
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
