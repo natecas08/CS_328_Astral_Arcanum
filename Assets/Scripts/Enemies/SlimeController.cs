@@ -56,7 +56,7 @@ public class SlimeController : MonoBehaviour
     public slimeState curState = slimeState.Wandering;
     public Transform target;
     public float moveSpeed = 0.8f;
-    public float targetRange = 2f; //distance threshold that triggers hostile mode
+    public float targetRange = 10f; //distance threshold that triggers hostile mode
 
     Rigidbody2D rb;
     Animator animator;
@@ -119,6 +119,15 @@ public class SlimeController : MonoBehaviour
     {
         if (!hit)
         {
+            /*
+            Vector2 directionToPlayer = target.position - transform.position;
+            TryMove(directionToPlayer);
+            */
+
+            Vector2 directionToPlayer = (target.position - transform.position).normalized;
+            rb.MovePosition(rb.position + moveSpeed * Time.fixedDeltaTime * directionToPlayer);
+
+            /*
             if (transform.position.x > target.position.x)
             {
                 //target is left
@@ -148,6 +157,7 @@ public class SlimeController : MonoBehaviour
                 rb.velocity = new Vector2(0f, moveSpeed);
                 transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, target.position.y), moveSpeed * Time.deltaTime);
             }
+            */
         }
     }
     private bool TryMove(Vector2 direction)

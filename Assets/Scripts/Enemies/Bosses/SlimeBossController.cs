@@ -7,7 +7,6 @@ public enum slimeBossState
 {
     Idle,
     Following,
-    Slam,
     Spawning,
     Death,
 };
@@ -17,9 +16,6 @@ public class SlimeBossController : MonoBehaviour
     public static float health = 3;
     public float maxHealth = 3;
     public Slider healthBar;
-
-    public bool charging = false;
-    public static int stateNum = 1;
 
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
     public ContactFilter2D movementFilter;
@@ -38,12 +34,6 @@ public class SlimeBossController : MonoBehaviour
     Rigidbody2D rb;
     Animator animator;
     GameObject player;
-
-    IEnumerator chargeUp()
-    {
-        yield return new WaitForSeconds(3);
-        charging = false;
-    }
 
     private bool inRange(float r)
     {
@@ -69,27 +59,18 @@ public class SlimeBossController : MonoBehaviour
         switch (curState)
         {
             case (slimeBossState.Idle):
-                stateNum = 1;
                 idle();
                 break;
             case (slimeBossState.Following):
-                stateNum = 2;
                 following();
                 break;
             case (slimeBossState.Death):
-                stateNum = 3;
                 death();
                 break;
-            case (slimeBossState.Slam):
-                stateNum = 4;
-                slam();
-                break;
             case (slimeBossState.Spawning):
-                stateNum = 5;
                 spawning();
                 break;
             default:
-                stateNum = 1;
                 idle();
                 break;
         }
@@ -160,8 +141,7 @@ public class SlimeBossController : MonoBehaviour
         {
             hit = true;
             healthBar.value = health/maxHealth;
-            //slime boss hit
-            //StartCoroutine(playerBreak());
+            hit = false;
         }
     }
 
@@ -184,16 +164,6 @@ public class SlimeBossController : MonoBehaviour
     {
         //death
         Destroy(rb.gameObject);
-    }
-    void slam()
-    {
-        rb.velocity = new Vector2(0f, 0f);
-        charging = true;
-        StartCoroutine(chargeUp());
-        if(!charging)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, target.position.y), moveSpeed * 3 * Time.deltaTime);
-        }
     }
 
     void spawning() {
