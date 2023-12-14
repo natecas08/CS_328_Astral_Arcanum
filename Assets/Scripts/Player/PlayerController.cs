@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     //end of level vars
     public static bool level1Complete = false;
+    public static bool level2Complete = false;
 
     //spell duration values
     public float fireTimeDuration = 1.0f;
@@ -91,6 +92,10 @@ public class PlayerController : MonoBehaviour
             newPos.y = 38;
 
             rb.position = newPos;
+        }
+        if(level2Complete) {
+            Debug.Log("new level unlocked");
+            level2Complete = false;
         }
         //start every frame by updating health and checking if player died.
         checkHealth();
