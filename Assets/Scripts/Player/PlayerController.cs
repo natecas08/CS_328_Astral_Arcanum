@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("new level unlocked");
             level1Complete = false;
             Vector2 newPos;
-            newPos.x = -32;
+            newPos.x = -33;
             newPos.y = 38;
 
             rb.position = newPos;

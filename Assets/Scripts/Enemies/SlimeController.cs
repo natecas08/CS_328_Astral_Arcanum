@@ -119,11 +119,6 @@ public class SlimeController : MonoBehaviour
     {
         if (!hit)
         {
-            /*
-            Vector2 directionToPlayer = target.position - transform.position;
-            TryMove(directionToPlayer);
-            */
-
             Vector2 directionToPlayer = (target.position - transform.position).normalized;
             rb.MovePosition(rb.position + moveSpeed * Time.fixedDeltaTime * directionToPlayer);
 
