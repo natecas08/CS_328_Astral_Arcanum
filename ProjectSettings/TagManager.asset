@@ -15,6 +15,7 @@ TagManager:
   - repairSpell
   - Lightning Powerup
   - Fire Spell
+  - EndLevel1
   layers:
   - Default
   - TransparentFX

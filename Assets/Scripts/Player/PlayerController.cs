@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    //end of level vars
+    public static bool level1Complete = false;
+
     //spell duration values
     public float fireTimeDuration = 1.0f;
     public float fireCoolDownDuration = 1.0f;
@@ -79,6 +82,16 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (level1Complete)
+        {
+            Debug.Log("new level unlocked");
+            level1Complete = false;
+            Vector2 newPos;
+            newPos.x = -32;
+            newPos.y = 38;
+
+            rb.position = newPos;
+        }
         //start every frame by updating health and checking if player died.
         checkHealth();
 

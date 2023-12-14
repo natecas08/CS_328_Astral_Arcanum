@@ -46,5 +46,10 @@ public class PlayerPickUp : MonoBehaviour
             PlayerController.numLightningPowerups += 1;
             PlayerController.discoveredLightningPowerup = true;
         }
+        if(other.gameObject.CompareTag("EndLevel1"))
+        {
+            Destroy(other.gameObject);
+            PlayerController.level1Complete = true;
+        }
     }
 }

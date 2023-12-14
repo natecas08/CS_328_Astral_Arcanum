@@ -6,7 +6,7 @@ public class CameraMovement : MonoBehaviour
 {
     public Transform followTransform;
     public BoxCollider2D mapBounds;
-    
+    public BoxCollider2D mapBounds2;
     
 
     private float xMin, xMax, yMin, yMax;
@@ -32,6 +32,13 @@ public class CameraMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(PlayerController.level1Complete)
+        {
+            xMin = mapBounds2.bounds.min.x;
+            yMin = mapBounds2.bounds.min.y;
+            xMax = mapBounds2.bounds.max.x;
+            yMax = mapBounds2.bounds.max.y;
+        }
         camY = Mathf.Clamp(followTransform.position.y, yMin + camOrthoSize, yMax - camOrthoSize);
         camX = Mathf.Clamp(followTransform.position.x, xMin + camRatio, xMax - camRatio);
         this.transform.position = new Vector3(camX, camY, this.transform.position.z);
