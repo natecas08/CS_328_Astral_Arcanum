@@ -21,7 +21,7 @@ public class SkeletonController : MonoBehaviour
     public skeletonState curState = skeletonState.Wandering;
     public Transform target;
     public float moveSpeed = 1.1f;
-    public float targetRange = 4f; //distance threshold that triggers hostile mode
+    public float targetRange = 2f; //distance threshold that triggers hostile mode
     public float health = 3;
     public bool hasEmerged = false;
 
@@ -145,6 +145,11 @@ public class SkeletonController : MonoBehaviour
             Vector3 direction = (target.position - transform.position).normalized;
             Vector2 moveDirection = direction;
             rb.velocity = new Vector2(moveDirection.x, moveDirection.y) * moveSpeed;
+            if(transform.position.x > target.position.x) {
+                transform.localScale = new Vector2(-1, 1);
+            } else if(transform.position.x < target.position.x) {
+                transform.localScale = new Vector2(1, 1);
+            }
         }
     }
     private bool TryMove(Vector2 direction)
@@ -169,7 +174,7 @@ public class SkeletonController : MonoBehaviour
     IEnumerator playerBreak()
     {
         rb.velocity = new Vector2(0f, 0f);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
         hit = false;
     }
 
@@ -185,7 +190,11 @@ public class SkeletonController : MonoBehaviour
 
     IEnumerator frozenDuration() { 
         frozen = true;
-        yield return new WaitForSeconds(1.5f);
+        animator.SetBool("isFrozen", true);
+        moveSpeed = 0f;
+        yield return new WaitForSeconds(2);
+        moveSpeed = 1.1f;
+        animator.SetBool("isFrozen", false);
         frozen = false;
     }
 
