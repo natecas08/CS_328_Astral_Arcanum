@@ -89,11 +89,9 @@ public class SkeletonController : MonoBehaviour
         switch(curState)
         {
             case (skeletonState.Wandering):
-                animator.SetBool("isHostile", false);
                 wandering();
                 break;
             case (skeletonState.Hostile):
-                animator.SetBool("isHostile", true);
                 hostile();
                 break;
             case (skeletonState.Death):
@@ -107,8 +105,7 @@ public class SkeletonController : MonoBehaviour
         if(inRange(targetRange) && curState != skeletonState.Death)
         {
             if(!hasEmerged) {
-                hasEmerged = true;
-                animator.SetBool("isActive", true);
+                StartCoroutine(emerge());
             }
             curState = skeletonState.Hostile;
         }
@@ -116,6 +113,12 @@ public class SkeletonController : MonoBehaviour
         {
             curState = skeletonState.Wandering;
         }
+    }
+
+    IEnumerator emerge() {
+        animator.SetTrigger("emerge");
+        yield return new WaitForSeconds(0.8f);
+        hasEmerged = true;
     }
 
     public void damage(float amount) {
@@ -136,8 +139,9 @@ public class SkeletonController : MonoBehaviour
 
     void hostile()
     {
-        if (!hit)
+        if (!hit && hasEmerged)
         {
+            animator.SetBool("isMoving", true);
             Vector3 direction = (target.position - transform.position).normalized;
             Vector2 moveDirection = direction;
             rb.velocity = new Vector2(moveDirection.x, moveDirection.y) * moveSpeed;
@@ -165,7 +169,7 @@ public class SkeletonController : MonoBehaviour
     IEnumerator playerBreak()
     {
         rb.velocity = new Vector2(0f, 0f);
-        yield return new WaitForSeconds(1.3f);
+        yield return new WaitForSeconds(1.5f);
         hit = false;
     }
 
@@ -174,18 +178,14 @@ public class SkeletonController : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             hit = true;
-            GetComponent<Animation>()["Skeleton_Attack"].wrapMode = WrapMode.Once;
-            GetComponent<Animation>().Play("Skeleton_Attack");
-            Debug.Log("Player Hit"); 
+            animator.SetTrigger("attack");
             StartCoroutine(playerBreak());
         }
     } 
 
     IEnumerator frozenDuration() { 
         frozen = true;
-        animator.SetBool("isFrozen", true);
         yield return new WaitForSeconds(2);
-        animator.SetBool("isFrozen", false);
         frozen = false;
     }
 
