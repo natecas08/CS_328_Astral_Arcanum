@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum slimeState
+public enum fireElemState
 {
     Wandering,
     Hostile,
     Death,
 };
-
-public class SlimeController : MonoBehaviour
+public class FireElementalController : MonoBehaviour
 {
     public bool isWaiting = false;
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
@@ -18,11 +17,11 @@ public class SlimeController : MonoBehaviour
     public bool hit = false;
     public bool frozen = false;
 
-    public slimeState curState = slimeState.Wandering;
+    public fireElemState curState = fireElemState.Wandering;
     public Transform target;
     public float moveSpeed = 1f;
-    public float targetRange = 4f; //distance threshold that triggers hostile mode
-    public float health = 2;
+    public float targetRange = 3f; //distance threshold that triggers hostile mode
+    public float health = 4;
 
     Rigidbody2D rb;
     Animator animator;
@@ -87,15 +86,13 @@ public class SlimeController : MonoBehaviour
 
         switch(curState)
         {
-            case (slimeState.Wandering):
-                animator.SetBool("isHostile", false);
+            case (fireElemState.Wandering):
                 wandering();
                 break;
-            case (slimeState.Hostile):
-                animator.SetBool("isHostile", true);
+            case (fireElemState.Hostile):
                 hostile();
                 break;
-            case (slimeState.Death):
+            case (fireElemState.Death):
                 death();
                 break;
             default:
@@ -103,18 +100,22 @@ public class SlimeController : MonoBehaviour
                 break;
         }
 
-        if(inRange(targetRange) && curState != slimeState.Death)
+        if(inRange(targetRange) && curState != fireElemState.Death)
         {
-            curState = slimeState.Hostile;
+            curState = fireElemState.Hostile;
         }
-        else if(!inRange(targetRange) && curState != slimeState.Death)
+        else if(!inRange(targetRange) && curState != fireElemState.Death)
         {
-            curState = slimeState.Wandering;
+            curState = fireElemState.Wandering;
         }
     }
 
     public void damage(float amount) {
         health -= amount;
+    }
+
+    public void heal(float amount) {
+        health += amount;
     }
 
     void death() {
@@ -176,11 +177,7 @@ public class SlimeController : MonoBehaviour
 
     IEnumerator frozenDuration() { 
         frozen = true;
-        animator.SetBool("isFrozen", true);
-        moveSpeed = 0f;
         yield return new WaitForSeconds(2);
-        moveSpeed = 1f;
-        animator.SetBool("isFrozen", false);
         frozen = false;
     }
 
@@ -188,4 +185,3 @@ public class SlimeController : MonoBehaviour
         StartCoroutine(frozenDuration());
     }
 }
- 

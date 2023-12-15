@@ -27,7 +27,6 @@ public class PlayerInteractions : MonoBehaviour
         if(other.gameObject.CompareTag("Slime") && PlayerController.freezeCasted == true && PlayerController.freezeEnabled == true) {
             other.gameObject.GetComponent<SlimeController>().damage(1);
             other.gameObject.GetComponent<SlimeController>().setFrozen();
-            Debug.Log("slime hit with freeze");
         }
 
         //kill ghost
@@ -41,6 +40,18 @@ public class PlayerInteractions : MonoBehaviour
         //damage skeleton
         if (other.gameObject.CompareTag("Skeleton") && PlayerController.fireCasted == true && PlayerController.fireEnabled == true) {
             other.gameObject.GetComponent<SkeletonController>().damage(1);
+        }
+        if(other.gameObject.CompareTag("Skeleton") && PlayerController.freezeCasted == true && PlayerController.freezeEnabled == true) {
+            other.gameObject.GetComponent<SkeletonController>().damage(1);
+            other.gameObject.GetComponent<SkeletonController>().setFrozen();
+        }
+
+        //damage fire elemental
+        if(other.gameObject.CompareTag("Fire Elemental") && PlayerController.fireEnabled == true && PlayerController.fireCasted == true) {
+            other.gameObject.GetComponent<FireElementalController>().heal(1);
+        }
+        if(other.gameObject.CompareTag("Fire Elemental") && PlayerController.freezeCasted == true && PlayerController.freezeEnabled == true) {
+            other.gameObject.GetComponent<FireElementalController>().damage(2);
         }
 
         //destroy burnables

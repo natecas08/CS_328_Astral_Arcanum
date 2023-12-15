@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     public static int slimeBossStunTime = 2;
     public static int ghostDamage = 1;
     public static int skeletonDamage = 2;
+    public static int fireElementalDamage = 3;
 
     //boss damage values
     public static int slimeBossDamage = 1;
@@ -418,6 +419,10 @@ public class PlayerController : MonoBehaviour
 
             if(other.gameObject.CompareTag("Skeleton")) {
                 StartCoroutine(OnHit(skeletonDamage));
+            }
+
+            if(other.gameObject.CompareTag("Fire Elemental")) {
+                StartCoroutine(OnHit(fireElementalDamage));
             }
         }
     }
