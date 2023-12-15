@@ -102,6 +102,12 @@ public class PlayerController : MonoBehaviour
         if(level2Complete) {
             Debug.Log("new level unlocked");
             level2Complete = false;
+
+            Vector2 newPos;
+            newPos.x = -36;
+            newPos.y = 91;
+
+            rb.position = newPos;
         }
         //start every frame by updating health and checking if player died.
         checkHealth();

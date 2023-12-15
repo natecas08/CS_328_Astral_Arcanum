@@ -20,6 +20,7 @@ TagManager:
   - Freeze Spell Sheet
   - Skeleton
   - Fire Elemental
+  - EndLevel2
   layers:
   - Default
   - TransparentFX

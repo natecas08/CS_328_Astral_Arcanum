@@ -56,5 +56,10 @@ public class PlayerPickUp : MonoBehaviour
             Destroy(other.gameObject);
             PlayerController.level1Complete = true;
         }
+        if (other.gameObject.CompareTag("EndLevel2"))
+        {
+            Destroy(other.gameObject);
+            PlayerController.level2Complete = true;
+        }
     }
 }
