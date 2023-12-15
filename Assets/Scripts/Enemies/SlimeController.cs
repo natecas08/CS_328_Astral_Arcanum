@@ -17,6 +17,7 @@ public class SlimeController : MonoBehaviour
     public ContactFilter2D movementFilter;
     public float collisionOffset = 0.05f;
     public bool hit = false;
+    public bool frozen = false;
 
     public slimeState curState = slimeState.Wandering;
     public Transform target;
@@ -88,9 +89,11 @@ public class SlimeController : MonoBehaviour
         switch(curState)
         {
             case (slimeState.Wandering):
+                animator.SetBool("isHostile", false);
                 wandering();
                 break;
             case (slimeState.Hostile):
+                animator.SetBool("isHostile", true);
                 hostile();
                 break;
             case (slimeState.Death):
@@ -109,8 +112,6 @@ public class SlimeController : MonoBehaviour
         {
             curState = slimeState.Wandering;
         }
-
-        
     }
 
     public void damage(float amount) {
@@ -173,5 +174,17 @@ public class SlimeController : MonoBehaviour
             StartCoroutine(playerBreak());
         }
     } 
+
+    IEnumerator frozenDuration() { 
+        frozen = true;
+        animator.SetBool("isFrozen", true);
+        yield return new WaitForSeconds(2);
+        animator.SetBool("isFrozen", false);
+        frozen = false;
+    }
+
+    public void setFrozen() {
+        StartCoroutine(frozenDuration());
+    }
 }
  

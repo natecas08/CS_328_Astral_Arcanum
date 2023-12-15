@@ -26,14 +26,22 @@ public class PlayerInteractions : MonoBehaviour
         }
         if(other.gameObject.CompareTag("Slime") && PlayerController.freezeCasted == true && PlayerController.freezeEnabled == true) {
             other.gameObject.GetComponent<SlimeController>().damage(1);
-            //Debug.Log("slime health: " + SlimeController.health);
+            other.gameObject.GetComponent<SlimeController>().setFrozen();
+            Debug.Log("slime hit with freeze");
         }
 
-        //fire insta kill (burnable & ghost)
-        if ((other.gameObject.CompareTag("Burnable") || other.gameObject.CompareTag("Ghost")) && PlayerController.fireEnabled == true && PlayerController.fireCasted == true)
+        //kill ghost
+        if (other.gameObject.CompareTag("Ghost") && PlayerController.fireEnabled == true && PlayerController.fireCasted == true) {
+            Destroy(other.gameObject);
+        }
+        if(other.gameObject.CompareTag("Ghost") && PlayerController.freezeEnabled == true && PlayerController.freezeCasted == true) {
+            Destroy(other.gameObject);
+        }
+
+        //destroy burnables
+        if (other.gameObject.CompareTag("Burnable") && PlayerController.fireEnabled == true && PlayerController.fireCasted == true)
         {
             Destroy(other.gameObject);
-            Debug.Log("this should only activate when the player casts the fire spell");
         }
         
         //repair spell
@@ -47,14 +55,13 @@ public class PlayerInteractions : MonoBehaviour
         if (other.gameObject.CompareTag("slimeBoss") && PlayerController.fireCasted == true && PlayerController.fireEnabled == true)
         {
             SlimeBossController.health -= 1;
-            Debug.Log("slime boss health: " + SlimeBossController.health);
         }
         if (other.gameObject.CompareTag("slimeBoss") && PlayerController.freezeCasted == true && PlayerController.freezeCasted == true)
         {
             SlimeBossController.health -= 1;
-            Debug.Log("slime boss health: " + SlimeBossController.health);
         }
         
+
         //lighting potion
         if ((other.gameObject.CompareTag("Slime") || other.gameObject.CompareTag("Ghost")) && PlayerController.lightningUsed == true)
         {

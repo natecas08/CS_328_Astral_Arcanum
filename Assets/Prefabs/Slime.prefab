@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8458165784810270989}
   - component: {fileID: 3734054515142561668}
   - component: {fileID: 1548356164066197284}
+  - component: {fileID: -4608683316028067347}
   m_Layer: 9
   m_Name: Slime
   m_TagString: Slime
@@ -171,6 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b29961a83b8a02240a37bf36582765cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isWaiting: 0
   movementFilter:
     useTriggers: 0
     useLayerMask: 0
@@ -187,7 +189,30 @@ MonoBehaviour:
     maxNormalAngle: 0
   collisionOffset: 0.05
   hit: 0
+  frozen: 0
   curState: 0
   target: {fileID: 0}
   moveSpeed: 0.5
   targetRange: 2
+  health: 2
+--- !u!95 &-4608683316028067347
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5958756663139645821}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b1a61373ecab22d46b1b614fb1e5c383, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
