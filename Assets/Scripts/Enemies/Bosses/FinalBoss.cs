@@ -14,11 +14,10 @@ public enum finalBossState
 
 public class finalBossController : MonoBehaviour
 {
-    public static bool invincible = false;
-
     public static float health = 10;
     public float maxHealth = 10;
     public Slider healthBar;
+    public GameObject corruptionObject;
 
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
     public ContactFilter2D movementFilter;
@@ -123,21 +122,12 @@ public class finalBossController : MonoBehaviour
             StartCoroutine(playerBreak());
         }
 
-        if(!invincible)
+        if(other.gameObject.CompareTag("Fire Spell"))
         {
-            if (other.gameObject.CompareTag("Fire Spell"))
-            {
-                hit = true;
-                healthBar.value = health / maxHealth;
-                hit = false;
-            }
-            if (other.gameObject.CompareTag("Freeze Spell"))
-            {
-                hit = true;
-                healthBar.value = health / maxHealth;
-                hit = false;
-            }
-        }   
+            hit = true;
+            healthBar.value = health/maxHealth;
+            hit = false;
+        }
     }
 
     IEnumerator playerBreak()
@@ -150,7 +140,7 @@ public class finalBossController : MonoBehaviour
 
         rb.velocity = new Vector2(0f, 0f);
         //GetComponent<SpriteRenderer>().sprite = squishedSprite;
-        yield return new WaitForSeconds(6);
+        yield return new WaitForSeconds(3);
         //GetComponent<SpriteRenderer>().sprite = normalSprite;
         hit = false;
     }
@@ -159,23 +149,15 @@ public class finalBossController : MonoBehaviour
     {
         //death
         Destroy(rb.gameObject);
-
     }
 
     void sheild()
     {
-        invincible = true;
-        StartCoroutine(sheildTimer());
-    }
 
-    IEnumerator sheildTimer()
-    {
-        yield return new WaitForSeconds(5);
-        invincible = false;
     }
 
     void corruption()
     {
-
+        //Rigidbody2D rb = corruptionObject.GetComponent<Rigidbody2D>();
     }
 }
