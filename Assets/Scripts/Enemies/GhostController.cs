@@ -11,6 +11,7 @@ public enum ghostState
 
 public class GhostController : MonoBehaviour
 {
+    public bool isWaiting = false;
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
     public ContactFilter2D movementFilter;
     public float collisionOffset = 0.05f;
@@ -18,16 +19,50 @@ public class GhostController : MonoBehaviour
 
     public ghostState curState = ghostState.Wandering;
     public Transform target;
-    public float moveSpeed = 0.8f;
+    public float moveSpeed = 1.4f;
     public float targetRange = 10f; //distance threshold that triggers hostile mode
 
     Rigidbody2D rb;
     Animator animator;
     GameObject player;
 
+    IEnumerator waiting(int sec) {
+        isWaiting = true;
+        float start = Time.time;
+        float velX = Random.Range(0, 2);
+        float velY = Random.Range(0, 2);
+        int dir = Random.Range(0, 1);
+        if (dir == 0)
+        {
+            dir = -1;
+        }
+
+
+        while (Time.time < (start + sec))
+        {
+            TryMove(new Vector2(velX * dir, velY * dir));
+            yield return null;
+        }
+
+        rb.velocity = new Vector2(0, 0);
+        yield return new WaitForSeconds(sec * 2);
+
+        start = Time.time;
+        while (Time.time < (start + sec))
+        {
+            TryMove(new Vector2(velX * -dir, velY * -dir));
+            yield return null;
+        }
+
+        rb.velocity = new Vector2(0, 0);
+        yield return new WaitForSeconds(sec * 2);
+        
+        isWaiting = false;
+    }
+
     private bool inRange(float r)
     {
-        return Vector3.Distance(transform.position, player.transform.position) <= targetRange;
+        return Vector3.Distance(transform.position, target.position) <= targetRange;
     }
 
     // Start is called before the first frame update
@@ -66,74 +101,25 @@ public class GhostController : MonoBehaviour
         {
             curState = ghostState.Wandering;
         }
+    }
 
-        void wandering()
+    void wandering()
+    {
+        if (!isWaiting)
         {
-            //StartCoroutine(waiting(4));
-        }
-
-        IEnumerator waiting(int sec)
-        {
-            float velX = Random.Range(0, 2);
-            float velY = Random.Range(0, 2);
-            int dir = Random.Range(0, 1);
-            if (dir == 0)
-            {
-                dir = -1;
-            }
-
-
-            TryMove(new Vector2(velX * dir, velY * dir));
-            yield return new WaitForSeconds(sec);
-
-            rb.velocity = new Vector2(0, 0);
-            yield return new WaitForSeconds(sec * 2);
-
-            TryMove(new Vector2(velX * -dir, velY * -dir));
-            yield return new WaitForSeconds(sec);
-
-            rb.velocity = new Vector2(0, 0);
-            yield return new WaitForSeconds(sec * 2);
-
-        }
-
-        void hostile()
-        {
-            if (!hit)
-            {
-                if (transform.position.x > target.position.x)
-                {
-                    //target is left
-                    transform.localScale = new Vector2(-1, 1);
-                    rb.velocity = new Vector2(-moveSpeed, 0f);
-                    transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, transform.position.y), moveSpeed * Time.deltaTime);
-                }
-                else if (transform.position.x < target.position.x)
-                {
-                    //target is right
-                    transform.localScale = new Vector2(1, 1);
-                    rb.velocity = new Vector2(moveSpeed, 0f);
-                    transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, transform.position.y), moveSpeed * Time.deltaTime);
-                }
-
-                if (transform.position.y > target.position.y)
-                {
-                    //target is left
-                    //transform.localScale = new Vector2(1, -1);
-                    rb.velocity = new Vector2(0f, -moveSpeed);
-                    transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, transform.position.y), moveSpeed * Time.deltaTime);
-                }
-                else if (transform.position.y < target.position.y)
-                {
-                    //target is right
-                    //transform.localScale = new Vector2(1, 1);
-                    rb.velocity = new Vector2(0f, moveSpeed);
-                    transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, transform.position.y), moveSpeed * Time.deltaTime);
-                }
-            }
+            StartCoroutine(waiting(2));
         }
     }
 
+    void hostile()
+    {
+        if (!hit)
+        {
+            Vector3 direction = (target.position - transform.position).normalized;
+            Vector2 moveDirection = direction;
+            rb.velocity = new Vector2(moveDirection.x, moveDirection.y) * moveSpeed;
+        }
+    }
     private bool TryMove(Vector2 direction)
     {
         int count = rb.Cast(
@@ -149,19 +135,12 @@ public class GhostController : MonoBehaviour
         }
         else
         {
-            rb.MovePosition(rb.position + moveSpeed * Time.fixedDeltaTime * direction);
             return false;
         }
     }
 
     IEnumerator playerBreak()
     {
-        /* something about this is making them run right
-        rb.velocity = new Vector2(moveSpeed * 2, 0f);
-        transform.position = Vector2.MoveTowards(transform.position, new Vector2((target.position.x) + 0.5f * (-rb.velocity.x), transform.position.y), moveSpeed * 2 * Time.deltaTime);
-        yield return new WaitForSeconds(5);
-        */
-
         rb.velocity = new Vector2(0f, 0f);
         yield return new WaitForSeconds(2);
         hit = false;
@@ -172,9 +151,9 @@ public class GhostController : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             hit = true;
-            Debug.Log("Player Hit");
+            Debug.Log("Player Hit"); 
             StartCoroutine(playerBreak());
         }
-    }
+    } 
 }
 

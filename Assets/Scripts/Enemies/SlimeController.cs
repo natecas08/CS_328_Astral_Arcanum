@@ -12,6 +12,22 @@ public enum slimeState
 public class SlimeController : MonoBehaviour
 {
     public bool isWaiting = false;
+
+    List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
+    public ContactFilter2D movementFilter;
+    public float collisionOffset = 0.05f;
+    public bool hit = false;
+
+    public slimeState curState = slimeState.Wandering;
+    public Transform target;
+    public float moveSpeed = 1f;
+    public float targetRange = 4f; //distance threshold that triggers hostile mode
+    public float health = 2;
+
+    Rigidbody2D rb;
+    Animator animator;
+    GameObject player;
+
     IEnumerator waiting(int sec)
     {
         isWaiting = true;
@@ -47,22 +63,6 @@ public class SlimeController : MonoBehaviour
         isWaiting = false;
   
     }
-
-    List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
-    public ContactFilter2D movementFilter;
-    public float collisionOffset = 0.05f;
-    public bool hit = false;
-
-    public slimeState curState = slimeState.Wandering;
-    public Transform target;
-    public float moveSpeed = 1f;
-    public float targetRange = 50f; //distance threshold that triggers hostile mode
-    public float health = 2;
-
-    Rigidbody2D rb;
-    Animator animator;
-    GameObject player;
-    Vector2 moveDirection;
 
     private bool inRange(float r)
     {
@@ -134,7 +134,7 @@ public class SlimeController : MonoBehaviour
         if (!hit)
         {
             Vector3 direction = (target.position - transform.position).normalized;
-            moveDirection = direction;
+            Vector2 moveDirection = direction;
             rb.velocity = new Vector2(moveDirection.x, moveDirection.y) * moveSpeed;
         }
     }

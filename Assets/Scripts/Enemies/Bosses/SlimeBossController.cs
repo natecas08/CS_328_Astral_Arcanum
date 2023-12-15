@@ -24,8 +24,8 @@ public class SlimeBossController : MonoBehaviour
 
     public slimeBossState curState = slimeBossState.Idle;
     public Transform target;
-    public float moveSpeed = 0.5f;
-    public float targetRange = 2f; //distance threshold that triggers hostile mode
+    public float moveSpeed = 2f;
+    public float targetRange = 2.5f; //distance threshold that triggers hostile mode
     public GameObject slimePrefab;
 
     public Sprite normalSprite;
@@ -96,35 +96,9 @@ public class SlimeBossController : MonoBehaviour
     {
         if (!hit)
         {
-            if (transform.position.x > target.position.x)
-            {
-                //target is left
-                transform.localScale = new Vector2(-1, 1);
-                rb.velocity = new Vector2(-moveSpeed, 0f);
-                transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, target.position.y), moveSpeed * Time.deltaTime);
-            }
-            else if (transform.position.x < target.position.x)
-            {
-                //target is right
-                transform.localScale = new Vector2(1, 1);
-                rb.velocity = new Vector2(moveSpeed, 0f);
-                transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, target.position.y), moveSpeed * Time.deltaTime);
-            }
-
-            if (transform.position.y > target.position.y)
-            {
-                //target is above
-                //transform.localScale = new Vector2(1, -1);
-                rb.velocity = new Vector2(0f, -moveSpeed);
-                transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, target.position.y), moveSpeed * Time.deltaTime);
-            }
-            else if (transform.position.y < target.position.y)
-            {
-                //target is below
-                //transform.localScale = new Vector2(1, 1);
-                rb.velocity = new Vector2(0f, moveSpeed);
-                transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, target.position.y), moveSpeed * Time.deltaTime);
-            }
+            Vector3 direction = (target.position - transform.position).normalized;
+            Vector2 moveDirection = direction;
+            rb.velocity = new Vector2(moveDirection.x, moveDirection.y) * moveSpeed;
         }
     }
 
