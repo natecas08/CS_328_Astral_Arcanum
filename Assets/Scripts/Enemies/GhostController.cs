@@ -69,7 +69,7 @@ public class GhostController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        //animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
@@ -118,6 +118,11 @@ public class GhostController : MonoBehaviour
             Vector3 direction = (target.position - transform.position).normalized;
             Vector2 moveDirection = direction;
             rb.velocity = new Vector2(moveDirection.x, moveDirection.y) * moveSpeed;
+            if(transform.position.x > target.position.x) {
+                transform.localScale = new Vector2(1, 1);
+            } else if(transform.position.x < target.position.x) {
+                transform.localScale = new Vector2(-1, 1);
+            }
         }
     }
     private bool TryMove(Vector2 direction)
