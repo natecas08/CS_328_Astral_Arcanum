@@ -21,6 +21,7 @@ TagManager:
   - Skeleton
   - Fire Elemental
   - EndLevel2
+  - finalBoss
   layers:
   - Default
   - TransparentFX

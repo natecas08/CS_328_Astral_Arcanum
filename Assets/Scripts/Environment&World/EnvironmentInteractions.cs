@@ -76,12 +76,28 @@ public class PlayerInteractions : MonoBehaviour
         {
             SlimeBossController.health -= 1;
         }
-        
+
+        //damage final boss
+        if (other.gameObject.CompareTag("finalBoss") && PlayerController.fireCasted == true && PlayerController.fireEnabled == true)
+        {
+            finalBossController.health -= 1;
+        }
+        if (other.gameObject.CompareTag("finalBoss") && PlayerController.freezeCasted == true && PlayerController.freezeCasted == true)
+        {
+            finalBossController.health -= 1;
+        }
+
 
         //lighting potion
         if ((other.gameObject.CompareTag("Slime") || other.gameObject.CompareTag("Ghost") || other.gameObject.CompareTag("Skeleton") || other.gameObject.CompareTag("Fire Elemental")) && PlayerController.lightningUsed == true)
         {
             Destroy(other.gameObject);
+            Debug.Log("lightning Used");
+        }
+
+        if (other.gameObject.CompareTag("finalBoss") && PlayerController.lightningUsed == true)
+        {
+            finalBossController.health -= 2;
             Debug.Log("lightning Used");
         }
     }

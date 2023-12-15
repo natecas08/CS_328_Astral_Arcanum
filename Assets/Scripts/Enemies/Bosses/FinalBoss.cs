@@ -14,6 +14,8 @@ public enum finalBossState
 
 public class finalBossController : MonoBehaviour
 {
+    public static bool invincible = false;
+
     public static float health = 10;
     public float maxHealth = 10;
     public Slider healthBar;
@@ -116,12 +118,21 @@ public class finalBossController : MonoBehaviour
             StartCoroutine(playerBreak());
         }
 
-        if(other.gameObject.CompareTag("Fire Spell"))
+        if(!invincible)
         {
-            hit = true;
-            healthBar.value = health/maxHealth;
-            hit = false;
-        }
+            if (other.gameObject.CompareTag("Fire Spell"))
+            {
+                hit = true;
+                healthBar.value = health / maxHealth;
+                hit = false;
+            }
+            if (other.gameObject.CompareTag("Freeze Spell"))
+            {
+                hit = true;
+                healthBar.value = health / maxHealth;
+                hit = false;
+            }
+        }   
     }
 
     IEnumerator playerBreak()
@@ -143,11 +154,19 @@ public class finalBossController : MonoBehaviour
     {
         //death
         Destroy(rb.gameObject);
+
     }
 
     void sheild()
     {
+        invincible = true;
+        StartCoroutine(sheildTimer());
+    }
 
+    IEnumerator sheildTimer()
+    {
+        yield return new WaitForSeconds(5);
+        invincible = false;
     }
 
     void corruption()
