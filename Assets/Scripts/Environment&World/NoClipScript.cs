@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 public class NoClipScript : MonoBehaviour
 {
     private TilemapCollider2D mapCollisions;
-    bool noClipToggle = false;
+    bool noClipToggle = true;
 
 
     // Start is called before the first frame update
