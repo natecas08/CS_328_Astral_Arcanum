@@ -18,6 +18,10 @@ public class NoClipScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!noClipToggle)
+        {
+            PlayerController.playerHealth = 10;
+        }
         if (Input.GetKeyDown(KeyCode.Slash))
         {
             //noclip
