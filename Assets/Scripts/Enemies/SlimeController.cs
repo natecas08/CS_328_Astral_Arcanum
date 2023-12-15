@@ -55,17 +55,18 @@ public class SlimeController : MonoBehaviour
 
     public slimeState curState = slimeState.Wandering;
     public Transform target;
-    public float moveSpeed = 0.8f;
-    public float targetRange = 10f; //distance threshold that triggers hostile mode
+    public float moveSpeed = 1f;
+    public float targetRange = 50f; //distance threshold that triggers hostile mode
     public float health = 2;
 
     Rigidbody2D rb;
     Animator animator;
     GameObject player;
+    Vector2 moveDirection;
 
     private bool inRange(float r)
     {
-        return Vector3.Distance(transform.position, player.transform.position) <= targetRange;
+        return Vector3.Distance(transform.position, target.position) <= targetRange;
     }
 
     // Start is called before the first frame update
@@ -132,40 +133,9 @@ public class SlimeController : MonoBehaviour
     {
         if (!hit)
         {
-            Vector2 directionToPlayer = (target.position - transform.position).normalized;
-            rb.MovePosition(rb.position + moveSpeed * Time.fixedDeltaTime * directionToPlayer);
-
-            /*
-            if (transform.position.x > target.position.x)
-            {
-                //target is left
-                transform.localScale = new Vector2(-1, 1);
-                rb.velocity = new Vector2(-moveSpeed, 0f);
-                transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, target.position.y), moveSpeed * Time.deltaTime);
-            }
-            else if (transform.position.x < target.position.x)
-            {
-                //target is right
-                transform.localScale = new Vector2(1, 1);
-                rb.velocity = new Vector2(moveSpeed, 0f);
-                transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, target.position.y), moveSpeed * Time.deltaTime);
-            }
-
-            if (transform.position.y > target.position.y)
-            {
-                //target is left
-                //transform.localScale = new Vector2(1, -1);
-                rb.velocity = new Vector2(0f, -moveSpeed);
-                transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, target.position.y), moveSpeed * Time.deltaTime);
-            }
-            else if (transform.position.y < target.position.y)
-            {
-                //target is right
-                //transform.localScale = new Vector2(1, 1);
-                rb.velocity = new Vector2(0f, moveSpeed);
-                transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.position.x, target.position.y), moveSpeed * Time.deltaTime);
-            }
-            */
+            Vector3 direction = (target.position - transform.position).normalized;
+            moveDirection = direction;
+            rb.velocity = new Vector2(moveDirection.x, moveDirection.y) * moveSpeed;
         }
     }
     private bool TryMove(Vector2 direction)
@@ -189,16 +159,6 @@ public class SlimeController : MonoBehaviour
 
     IEnumerator playerBreak()
     {
-        /*
-        rb.velocity = new Vector2(moveSpeed*2, 0f);
-        Vector2 backOff;
-        backOff.x = ((target.position.x) + 0.1f * (-rb.velocity.x));
-        backOff.y = transform.position.y;
-
-        transform.position = Vector2.MoveTowards(transform.position, backOff, moveSpeed * 2 * Time.deltaTime);
-        yield return new WaitForSeconds(5);
-        */
-
         rb.velocity = new Vector2(0f, 0f);
         yield return new WaitForSeconds(2);
         hit = false;
