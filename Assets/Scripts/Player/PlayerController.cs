@@ -46,6 +46,13 @@ public class PlayerController : MonoBehaviour
     //UI Objects
     public GameObject deathScreenUI;
     public GameObject hudUI;
+    public GameObject SpellBarSelector;
+    private static Vector3[] bar_locations = { new Vector3(674, 117, 0),
+                                        new Vector3(784, 117, 0),
+                                        new Vector3(894, 117, 0),
+                                        new Vector3(1000,  117, 0),
+                                        new Vector3(1112, 117, 0),
+                                        new Vector3(1221, 117, 0)};
 
     //sound effects
     public AudioSource fireSpellSFX;
@@ -91,6 +98,8 @@ public class PlayerController : MonoBehaviour
             Transform child = hudUI.transform.GetChild(i);
             child.gameObject.SetActive(false);
         }
+        SpellBarSelector = hudUI.transform.GetChild(17).gameObject;
+        SpellBarSelector.transform.position = bar_locations[0];
     }
 
     // Update is called once per frame
@@ -124,7 +133,8 @@ public class PlayerController : MonoBehaviour
         {
             if(fireEnabled)
             {
-                spellSelected = 1;
+                spellSelected = 1; 
+                SpellBarSelector.transform.position = bar_locations[0];
                 Debug.Log("Fire Spell Selected");
             }
             else
@@ -137,6 +147,7 @@ public class PlayerController : MonoBehaviour
             if(repairEnabled)
             {
                 spellSelected = 2;
+                SpellBarSelector.transform.position = bar_locations[1];
                 Debug.Log("Repair Spell Selected");
             }
             else
@@ -147,6 +158,7 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Keypad3) || Input.GetKeyDown(KeyCode.Alpha3)) {
             if(freezeEnabled) {
                 spellSelected = 3;
+                SpellBarSelector.transform.position = bar_locations[2];
                 Debug.Log("Freeze Spell Selected");
             } else {
                 Debug.Log("Invalid Spell Selected");
@@ -155,6 +167,7 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Keypad5) || Input.GetKeyDown(KeyCode.Alpha5)) {
             if(discoveredHealthPowerup) {
                 spellSelected = 5;
+                SpellBarSelector.transform.position = bar_locations[4];
                 Debug.Log("Health Powerup Selected");
             } else {
                 Debug.Log("Invalid Spell Selected");
@@ -163,6 +176,7 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Keypad6) || Input.GetKeyDown(KeyCode.Alpha6)) {
             if(discoveredLightningPowerup) {
                 spellSelected = 6;
+                SpellBarSelector.transform.position = bar_locations[5];
                 Debug.Log("Lightning Powerup Selected");
             } else {
                 Debug.Log("Invalid Spell Selected");
