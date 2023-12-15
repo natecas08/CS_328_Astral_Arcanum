@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum slimeState
+
+public enum skeletonState
 {
     Wandering,
     Hostile,
     Death,
 };
-
-public class SlimeController : MonoBehaviour
+public class SkeletonController : MonoBehaviour
 {
     public bool isWaiting = false;
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
@@ -18,11 +18,12 @@ public class SlimeController : MonoBehaviour
     public bool hit = false;
     public bool frozen = false;
 
-    public slimeState curState = slimeState.Wandering;
+    public skeletonState curState = skeletonState.Wandering;
     public Transform target;
-    public float moveSpeed = 1f;
+    public float moveSpeed = 1.1f;
     public float targetRange = 4f; //distance threshold that triggers hostile mode
-    public float health = 2;
+    public float health = 3;
+    public bool hasEmerged = false;
 
     Rigidbody2D rb;
     Animator animator;
@@ -87,15 +88,15 @@ public class SlimeController : MonoBehaviour
 
         switch(curState)
         {
-            case (slimeState.Wandering):
+            case (skeletonState.Wandering):
                 animator.SetBool("isHostile", false);
                 wandering();
                 break;
-            case (slimeState.Hostile):
+            case (skeletonState.Hostile):
                 animator.SetBool("isHostile", true);
                 hostile();
                 break;
-            case (slimeState.Death):
+            case (skeletonState.Death):
                 death();
                 break;
             default:
@@ -103,13 +104,17 @@ public class SlimeController : MonoBehaviour
                 break;
         }
 
-        if(inRange(targetRange) && curState != slimeState.Death)
+        if(inRange(targetRange) && curState != skeletonState.Death)
         {
-            curState = slimeState.Hostile;
+            if(!hasEmerged) {
+                hasEmerged = true;
+                animator.SetBool("isActive", true);
+            }
+            curState = skeletonState.Hostile;
         }
-        else if(!inRange(targetRange) && curState != slimeState.Death)
+        else if(!inRange(targetRange) && curState != skeletonState.Death)
         {
-            curState = slimeState.Wandering;
+            curState = skeletonState.Wandering;
         }
     }
 
@@ -123,7 +128,7 @@ public class SlimeController : MonoBehaviour
 
     void wandering()
     {
-        if (!isWaiting)
+        if (!isWaiting && hasEmerged)
         {
             StartCoroutine(waiting(2));
         }
@@ -160,7 +165,7 @@ public class SlimeController : MonoBehaviour
     IEnumerator playerBreak()
     {
         rb.velocity = new Vector2(0f, 0f);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1.3f);
         hit = false;
     }
 
@@ -169,6 +174,8 @@ public class SlimeController : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             hit = true;
+            GetComponent<Animation>()["Skeleton_Attack"].wrapMode = WrapMode.Once;
+            GetComponent<Animation>().Play("Skeleton_Attack");
             Debug.Log("Player Hit"); 
             StartCoroutine(playerBreak());
         }
@@ -186,4 +193,3 @@ public class SlimeController : MonoBehaviour
         StartCoroutine(frozenDuration());
     }
 }
- 
