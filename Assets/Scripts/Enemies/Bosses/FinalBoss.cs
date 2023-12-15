@@ -27,6 +27,7 @@ public class finalBossController : MonoBehaviour
     public Transform target;
     public float moveSpeed = 2f;
     public float targetRange = 10f; //distance threshold that triggers hostile mode
+    public float engageRange = 2f;
     public GameObject slimePrefab;
 
     Rigidbody2D rb;
@@ -101,9 +102,13 @@ public class finalBossController : MonoBehaviour
     {
         if (!hit)
         {
-            Vector3 direction = (target.position - transform.position).normalized;
-            Vector2 moveDirection = direction;
-            rb.velocity = new Vector2(moveDirection.x, moveDirection.y) * moveSpeed;
+            Vector3 direction = (target.position - transform.position);
+            if (direction.magnitude > engageRange)
+            {
+                direction = direction.normalized;
+                Vector2 moveDirection = direction;
+                rb.velocity = new Vector2(moveDirection.x, moveDirection.y) * moveSpeed;
+            }
         }
     }
 
