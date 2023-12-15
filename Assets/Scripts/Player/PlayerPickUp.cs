@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerPickUp : MonoBehaviour
@@ -11,11 +12,16 @@ public class PlayerPickUp : MonoBehaviour
     public GameObject shield_spell_bar;
     public GameObject health_spell_bar;
     public GameObject lightning_spell_bar;
+    public GameObject health_quantity;
+    public GameObject lightning_quantity;
+    public static TextMeshProUGUI health_text;
+    public static TextMeshProUGUI lightning_text;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        health_text = health_quantity.GetComponent<TextMeshProUGUI>();
+        lightning_text = lightning_quantity.GetComponent<TextMeshProUGUI>();
     }
 
     // Update is called once per frame
@@ -54,6 +60,8 @@ public class PlayerPickUp : MonoBehaviour
             PlayerController.numHealthPowerups += 1;
             PlayerController.discoveredHealthPowerup = true;
             health_spell_bar.SetActive(true);
+            health_text.SetText(PlayerController.numHealthPowerups.ToString());           
+
         }
         if(other.gameObject.CompareTag("Lightning Powerup")) {
             //play lightning pickup sound

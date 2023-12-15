@@ -202,6 +202,7 @@ public class PlayerController : MonoBehaviour
                         playerHealth += 3;
                         Debug.Log("Health Powerup Used");
                         numHealthPowerups -= 1;
+                        PlayerPickUp.health_text.SetText(numHealthPowerups.ToString());
                     }
                     break;
                 case 6: //lightning powerup
