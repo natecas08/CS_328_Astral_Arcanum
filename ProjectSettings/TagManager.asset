@@ -17,6 +17,7 @@ TagManager:
   - Fire Spell
   - EndLevel1
   - Freeze Spell
+  - Freeze Spell Sheet
   layers:
   - Default
   - TransparentFX
