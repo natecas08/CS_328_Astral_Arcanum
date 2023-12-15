@@ -25,13 +25,17 @@ public class PlayerPickUp : MonoBehaviour
         {
             Destroy(other.gameObject);
             PlayerController.fireEnabled = true;
-            PlayerController.freezeEnabled = true;
         }
 
         if (other.gameObject.CompareTag("Repair Spell Sheet"))
         {
             Destroy(other.gameObject);
             PlayerController.repairEnabled = true;
+        }
+
+        if(other.gameObject.CompareTag("Freeze Spell Sheet")) {
+            Destroy(other.gameObject);
+            PlayerController.freezeEnabled = true;
         }
 
         //Powerups
