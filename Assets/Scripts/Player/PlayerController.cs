@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     //spell duration values
     public float fireTimeDuration = 1.0f;
     public float fireCoolDownDuration = 1.0f;
+    public float freezeTimeDuration = 1.0f;
+    public float freezeCoolDownDuration = 1.0f;
 
     // Enemy damage values
     public static int slimeDamage = 1;
@@ -63,10 +65,12 @@ public class PlayerController : MonoBehaviour
     //Spell casting list
     public static bool fireCasted = false;
     public static bool repairCasted = false;
+    public static bool freezeCasted = false;
 
     //spells discovered array
     public static bool fireEnabled = false;
     public static bool repairEnabled = false;
+    public static bool freezeEnabled = false;
 
     //Spell selection
     public int spellSelected = 0;
@@ -125,17 +129,25 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Invalid Spell Selected");
             }
         }
-        if(Input.GetKeyDown(KeyCode.Keypad6) || Input.GetKeyDown(KeyCode.Alpha6)) {
+        if(Input.GetKeyDown(KeyCode.Keypad3) || Input.GetKeyDown(KeyCode.Alpha3)) {
+            if(freezeEnabled) {
+                spellSelected = 3;
+                Debug.Log("Freeze Spell Selected");
+            } else {
+                Debug.Log("Invalid Spell Selected");
+            }
+        }
+        if(Input.GetKeyDown(KeyCode.Keypad5) || Input.GetKeyDown(KeyCode.Alpha5)) {
             if(discoveredHealthPowerup) {
-                spellSelected = 6;
+                spellSelected = 5;
                 Debug.Log("Health Powerup Selected");
             } else {
                 Debug.Log("Invalid Spell Selected");
             }
         }
-        if(Input.GetKeyDown(KeyCode.Keypad7) || Input.GetKeyDown(KeyCode.Alpha7)) {
+        if(Input.GetKeyDown(KeyCode.Keypad6) || Input.GetKeyDown(KeyCode.Alpha6)) {
             if(discoveredLightningPowerup) {
-                spellSelected = 7;
+                spellSelected = 6;
                 Debug.Log("Lightning Powerup Selected");
             } else {
                 Debug.Log("Invalid Spell Selected");
@@ -163,14 +175,21 @@ public class PlayerController : MonoBehaviour
                         StartCoroutine(repairDuration());
                     }
                     break;
-                case 6: //health powerup
+                case 3: //freeze
+                    if(freezeEnabled) {
+                        freezeCasted = true;
+                        Debug.Log("Freeze Casted Start");
+                        StartCoroutine(freezeDuration());
+                    }
+                    break;
+                case 5: //health powerup
                     if(numHealthPowerups > 0) {
                         playerHealth += 3;
                         Debug.Log("Health Powerup Used");
                         numHealthPowerups -= 1;
                     }
                     break;
-                case 7: //lightning powerup
+                case 6: //lightning powerup
                     if(numLightningPowerups > 0) {
                         lightningUsed = true;
                         Debug.Log("Lightning used");
@@ -204,6 +223,14 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(fireCoolDown());
     }
 
+    IEnumerator freezeDuration() {
+        yield return new WaitForSeconds(freezeTimeDuration);
+        freezeCasted = false;
+        Debug.Log("Freeze Casted Complete");
+        freezeEnabled = false;
+        StartCoroutine(freezeCoolDown());
+    }
+
     IEnumerator lightningDuration()
     {
         yield return new WaitForSeconds(1);
@@ -216,6 +243,11 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(fireCoolDownDuration);
         fireEnabled = true;
+    }
+
+    IEnumerator freezeCoolDown() {
+        yield return new WaitForSeconds(freezeCoolDownDuration);
+        freezeEnabled = true;
     }
 
     private void FixedUpdate()
@@ -349,7 +381,9 @@ public class PlayerController : MonoBehaviour
     IEnumerator slimeBossStun() {
         moveSpeed = 0f;
         fireEnabled = false;
+        freezeEnabled = false;
         yield return new WaitForSeconds(slimeBossStunTime);
+        freezeEnabled = true;
         fireEnabled = true;
         moveSpeed = 1f;
     }

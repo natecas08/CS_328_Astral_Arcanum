@@ -25,6 +25,7 @@ public class PlayerPickUp : MonoBehaviour
         {
             Destroy(other.gameObject);
             PlayerController.fireEnabled = true;
+            PlayerController.freezeEnabled = true;
         }
 
         if (other.gameObject.CompareTag("Repair Spell Sheet"))

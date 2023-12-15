@@ -16,6 +16,7 @@ TagManager:
   - Lightning Powerup
   - Fire Spell
   - EndLevel1
+  - Freeze Spell
   layers:
   - Default
   - TransparentFX
