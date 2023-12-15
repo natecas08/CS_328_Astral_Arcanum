@@ -185,7 +185,7 @@ public class SkeletonController : MonoBehaviour
 
     IEnumerator frozenDuration() { 
         frozen = true;
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1.5f);
         frozen = false;
     }
 

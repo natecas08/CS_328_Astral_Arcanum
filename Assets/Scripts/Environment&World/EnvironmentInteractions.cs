@@ -38,6 +38,11 @@ public class PlayerInteractions : MonoBehaviour
             Destroy(other.gameObject);
         }
 
+        //damage skeleton
+        if (other.gameObject.CompareTag("Skeleton") && PlayerController.fireCasted == true && PlayerController.fireEnabled == true) {
+            other.gameObject.GetComponent<SkeletonController>().damage(1);
+        }
+
         //destroy burnables
         if (other.gameObject.CompareTag("Burnable") && PlayerController.fireEnabled == true && PlayerController.fireCasted == true)
         {

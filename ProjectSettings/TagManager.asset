@@ -18,6 +18,7 @@ TagManager:
   - EndLevel1
   - Freeze Spell
   - Freeze Spell Sheet
+  - Skeleton
   layers:
   - Default
   - TransparentFX

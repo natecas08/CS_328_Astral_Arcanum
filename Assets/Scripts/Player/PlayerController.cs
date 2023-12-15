@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     public static int slimeSlowTime = 2;
     public static int slimeBossStunTime = 2;
     public static int ghostDamage = 1;
+    public static int skeletonDamage = 2;
 
     //boss damage values
     public static int slimeBossDamage = 1;
@@ -396,7 +397,6 @@ public class PlayerController : MonoBehaviour
             if (other.gameObject.CompareTag("Slime"))
             {
                 //player hit
-                Debug.Log("THE SLIME HAS HIT THE PLAYER BUT HE SHOULD NOT BE DEAD");
                 slimeHitSFX.Play();
                 StartCoroutine(OnHit(slimeDamage));
                 StartCoroutine(slimeSlowDuration());
@@ -414,6 +414,10 @@ public class PlayerController : MonoBehaviour
                 slimeHitSFX.Play();
                 StartCoroutine(OnHit(slimeBossDamage));
                 StartCoroutine(slimeBossStun());
+            }
+
+            if(other.gameObject.CompareTag("Skeleton")) {
+                StartCoroutine(OnHit(skeletonDamage));
             }
         }
     }
