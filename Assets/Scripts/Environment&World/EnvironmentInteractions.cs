@@ -79,7 +79,7 @@ public class PlayerInteractions : MonoBehaviour
         
 
         //lighting potion
-        if ((other.gameObject.CompareTag("Slime") || other.gameObject.CompareTag("Ghost")) && PlayerController.lightningUsed == true)
+        if ((other.gameObject.CompareTag("Slime") || other.gameObject.CompareTag("Ghost") || other.gameObject.CompareTag("Skeleton") || other.gameObject.CompareTag("Fire Elemental")) && PlayerController.lightningUsed == true)
         {
             Destroy(other.gameObject);
             Debug.Log("lightning Used");
