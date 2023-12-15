@@ -57,6 +57,7 @@ public class SlimeController : MonoBehaviour
     public Transform target;
     public float moveSpeed = 0.8f;
     public float targetRange = 10f; //distance threshold that triggers hostile mode
+    public float health = 2;
 
     Rigidbody2D rb;
     Animator animator;
@@ -79,6 +80,10 @@ public class SlimeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(health <= 0) {
+            death();
+        }
+
         switch(curState)
         {
             case (slimeState.Wandering):
@@ -88,7 +93,7 @@ public class SlimeController : MonoBehaviour
                 hostile();
                 break;
             case (slimeState.Death):
-                //death();
+                death();
                 break;
             default:
                 wandering();
@@ -106,6 +111,15 @@ public class SlimeController : MonoBehaviour
 
         
     }
+
+    public void damage(float amount) {
+        health -= amount;
+    }
+
+    void death() {
+        Destroy(this.gameObject);
+    }
+
     void wandering()
     {
         if (!isWaiting)
@@ -113,7 +127,6 @@ public class SlimeController : MonoBehaviour
             StartCoroutine(waiting(2));
         }
     }
-
 
     void hostile()
     {
