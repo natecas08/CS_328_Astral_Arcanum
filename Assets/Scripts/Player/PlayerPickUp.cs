@@ -69,6 +69,7 @@ public class PlayerPickUp : MonoBehaviour
             PlayerController.numLightningPowerups += 1;
             PlayerController.discoveredLightningPowerup = true;
             lightning_spell_bar.SetActive (true);
+            lightning_text.SetText(PlayerController.numLightningPowerups.ToString());
         }
         if(other.gameObject.CompareTag("EndLevel1"))
         {

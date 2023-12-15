@@ -211,6 +211,7 @@ public class PlayerController : MonoBehaviour
                         Debug.Log("Lightning used");
                         StartCoroutine(lightningDuration());
                         numLightningPowerups--;
+                        PlayerPickUp.lightning_text.SetText(numLightningPowerups.ToString());
                         //do lightning stuff
                     }
                     break;
