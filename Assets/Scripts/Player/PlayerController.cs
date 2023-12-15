@@ -84,6 +84,13 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
+        //Set all hotbar elements disabled at start
+        for (int i = 11; i < 17; i++)
+        {
+            Transform child = hudUI.transform.GetChild(i);
+            child.gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame
