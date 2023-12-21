@@ -44,15 +44,19 @@ public class PlayerController : MonoBehaviour
     public Sprite emptyHeart;
 
     //UI Objects
+    private static int spellSelectXpos = 400;
+    private static int spellSelectXOffset = 64;
+    private static int spellSelectYPos = 60;
+
     public GameObject deathScreenUI;
     public GameObject hudUI;
     public GameObject SpellBarSelector;
-    private static Vector3[] bar_locations = { new Vector3(674, 117, 0),
-                                        new Vector3(784, 117, 0),
-                                        new Vector3(894, 117, 0),
-                                        new Vector3(1000,  117, 0),
-                                        new Vector3(1112, 117, 0),
-                                        new Vector3(1221, 117, 0)};
+    private static Vector3[] bar_locations = { new Vector3(spellSelectXpos, spellSelectYPos, 0),
+                                        new Vector3(spellSelectXpos + spellSelectXOffset, spellSelectYPos, 0),
+                                        new Vector3(spellSelectXpos + spellSelectXOffset * 2, spellSelectYPos, 0),
+                                        new Vector3(spellSelectXpos + spellSelectXOffset * 3, spellSelectYPos, 0),
+                                        new Vector3(spellSelectXpos + spellSelectXOffset * 4, spellSelectYPos, 0),
+                                        new Vector3(spellSelectXpos + spellSelectXOffset * 5, spellSelectYPos, 0)};
 
     //sound effects
     public AudioSource fireSpellSFX;
